@@ -1,0 +1,1 @@
+{"name":"soyathrive","version":"0.1.0","private":true,"devDependencies":{"@types/react":"^19.2.14","@types/react-dom":"^19.2.3","autoprefixer":"^10.4.27","postcss":"^8.5.8","tailwindcss":"^4.2.2","typescript":"^5.9.3"},"dependencies":{"lucide-react":"^0.577.0","react-router-dom":"^7.13.1"}}
