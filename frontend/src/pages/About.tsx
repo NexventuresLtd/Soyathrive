@@ -1,42 +1,57 @@
 import { Link } from "react-router-dom";
-import { Eye, Zap, Users, Lock, BarChart2, Globe, Building2, Heart, ChevronRight, MessageCircle, GraduationCap, Handshake } from "lucide-react";
+import { Eye, Target, Leaf, Shield, BarChart2, Users, ChevronRight, MessageCircle, GraduationCap, Handshake } from "lucide-react";
 import PageHero from "../components/ui/PageHero";
 
-const WHATSAPP_URL = "https://wa.me/250780000000";
+const WHATSAPP_URL =
+  "https://wa.me/250780000000?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.";
 
 const objectives = [
-  { num: "01", title: "Market Establishment", date: "Dec 2026", text: "Formalize partnerships with at least 4 secondary schools in Nyamasheke District and enroll a minimum of 300 students.", color: "border-blue-300 bg-blue-50" },
-  { num: "02", title: "Revenue & Sustainability", date: "Jun 2027", text: "Enroll at least 300 paying families, generating revenue to cover 35% of operational costs through the cross-subsidy model.", color: "border-amber-300 bg-amber-50" },
-  { num: "03", title: "Social Impact", date: "Dec 2027", text: "Provide fully subsidized services to at least 150 vulnerable or abandoned teenagers through strategic partnerships.", color: "border-green-300 bg-green-50" },
-  { num: "04", title: "Geographic Expansion", date: "Dec 2028", text: "Expand to at least two additional districts, increasing total enrollment to 800 students across all partner schools.", color: "border-purple-300 bg-purple-50" },
-  { num: "05", title: "Brand & Quality Assurance", date: "2028", text: "Achieve 85% parent satisfaction, 90% student retention, and annual impact reporting on emotional and academic outcomes.", color: "border-rose-300 bg-rose-50" },
+  {
+    num: "01",
+    title: "Product & Brand Quality",
+    date: "By Year 3",
+    text: "Develop and maintain high-quality, safe, and nutritionally fortified soy-based products, achieving at least 60% repeat purchase rate and strong brand trust among households and institutions in Ngororero District.",
+    color: "border-green-300 bg-green-50",
+  },
+  {
+    num: "02",
+    title: "Market Penetration & Customer Reach",
+    date: "By Year 3",
+    text: "Establish SoyaThrive in Ngororero District by reaching at least 5,000 households and securing distribution partnerships with retail outlets, schools, and health centers.",
+    color: "border-amber-300 bg-amber-50",
+  },
+  {
+    num: "03",
+    title: "Investment & Financial Sustainability",
+    date: "By Year 2",
+    text: "Achieve operational break-even by end of Year 2 and reach a minimum net profit margin of 15% by Year 3, supported by sustainable production and strategic partnerships.",
+    color: "border-green-200 bg-green-50",
+  },
 ];
 
 const values = [
-  { Icon: Handshake, title: "Inclusion", desc: "Every teenager, regardless of background or socio-economic status, deserves access to professional support.", color: "text-blue-600", bg: "bg-blue-50" },
-  { Icon: Lock, title: "Confidentiality", desc: "All counseling sessions are private and handled with the highest ethical standards.", color: "text-gray-600", bg: "bg-gray-50" },
-  { Icon: BarChart2, title: "Measurable Impact", desc: "We track emotional resilience, academic engagement, and career readiness outcomes.", color: "text-amber-600", bg: "bg-amber-50" },
-  { Icon: Globe, title: "Sustainability", desc: "A cross-subsidy model ensures long-term financial viability and continuous social impact.", color: "text-green-600", bg: "bg-green-50" },
-  { Icon: Building2, title: "School-Centered", desc: "Services delivered within schools reduce barriers and maximize student engagement.", color: "text-blue-600", bg: "bg-blue-50" },
-  { Icon: Heart, title: "Trauma-Informed", desc: "All staff and mentors are trained in adolescent development and ethical safeguarding.", color: "text-rose-600", bg: "bg-rose-50" },
+  { Icon: Leaf, title: "Affordability", desc: "Every product is priced to be accessible to low-income households in rural Rwanda.", color: "text-green-700", bg: "bg-green-50" },
+  { Icon: Shield, title: "Quality & Safety", desc: "All products meet national food safety standards with standardized processing and hygienic packaging.", color: "text-amber-600", bg: "bg-amber-50" },
+  { Icon: BarChart2, title: "Measurable Impact", desc: "We track nutrition outcomes, repeat purchases, and farmer income improvements.", color: "text-green-700", bg: "bg-green-50" },
+  { Icon: Users, title: "Community-Driven", desc: "Products co-created with mothers, CHWs, and farmers to ensure cultural relevance.", color: "text-amber-600", bg: "bg-amber-50" },
+  { Icon: Handshake, title: "Farmer Partnership", desc: "Contractual relationships with smallholder farmers ensure sustainable supply and fair income.", color: "text-green-700", bg: "bg-green-50" },
+  { Icon: Target, title: "Child-Centered", desc: "All activities prioritize improving nutrition outcomes for children under five.", color: "text-amber-600", bg: "bg-amber-50" },
 ];
 
 const team = [
   {
-    name: "Chancelline Niyotugendana",
+    name: "Jean Paul Bukuru",
     role: "Founder & Program Director",
-    id: "Student ID: 745770020",
-    bio: "Bachelor of Science in Entrepreneurial Leadership at African Leadership University. Passionate about youth mental health and rural development.",
-    photo: "/founder.jpg",
-    initials: "CN",
+    id: "Student ID: 256897847",
+    bio: "Bachelor of Science in Entrepreneurial Leadership at African Leadership University. Inspired by personal experience with rural child malnutrition and professional exposure at Rwanda Biomedical Center's MCCH program.",
+    initials: "JP",
   },
   {
-    name: "Kellia Marie Reine Isaro",
-    role: "Supervisor",
+    name: "Dr. Chioma Joy Okonkwo",
+    role: "Academic Supervisor",
     id: "African Leadership University",
-    bio: "Providing academic supervision and strategic guidance for the development of Chance for All as a sustainable social enterprise.",
-    photo: "/supervisor.jpg",
-    initials: "KI",
+    bio: "Providing academic supervision and strategic guidance for the development of SoyaThrive as a sustainable community-based social enterprise addressing child malnutrition in Rwanda.",
+    initials: "CJ",
   },
 ];
 
@@ -46,73 +61,103 @@ export default function About() {
       <PageHero
         badge="About Us"
         title="Our Mission &"
-        highlight="Vision"
-        subtitle="Addressing the gap in mental health support, mentorship, and career readiness for secondary school students in rural Rwanda."
-        badgeColor="blue"
+        highlight="Story"
+        subtitle="Addressing child malnutrition in Ngororero District through affordable soy-based foods, farmer empowerment, and community nutrition education."
+        color="green"
       />
 
-      {/* Origin story banner */}
-      <section className="relative h-64 sm:h-80 overflow-hidden bg-blue-900">
-        <img
-          src="/origin.jpg"
-          alt="Where we come from — Nyamasheke District"
-          className="w-full h-full object-cover opacity-60"
-        />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white drop-shadow mb-2">
-            Where We Come From
-          </h2>
-          <p className="text-blue-100 text-sm sm:text-base max-w-xl drop-shadow">
-            Born in Nyamasheke — one of Rwanda's most underserved districts — CHANCE For ALL was founded
-            to give every abandoned child a universe of untold potential.
-          </p>
+      {/* Founding story */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block text-xs font-bold uppercase tracking-widest text-green-700 bg-green-50 px-3 py-1 rounded-full mb-4">
+                Founding Story
+              </span>
+              <h2 className="text-3xl font-extrabold text-gray-900 mb-4">
+                Born from Lived Experience
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                SoyaThrive was inspired by both personal experience and professional exposure to the realities
+                of malnutrition in Rwanda. Growing up in a rural community, our founder witnessed many children
+                suffering from stunting and poor nutrition — often due to limited access to affordable, protein-rich foods.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                This experience was further reinforced during an internship at the Rwanda Biomedical Center (RBC),
+                working in Public Health under the Maternal, Child, and Community Health (MCCH) program. The work
+                provided deeper insight into the widespread challenges of child malnutrition and the urgent need for
+                sustainable, community-based nutrition solutions.
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                These experiences motivated the creation of SoyaThrive as a practical and scalable response to
+                this critical problem — one that combines local soy processing, farmer capacity building, and
+                community nutrition education.
+              </p>
+            </div>
+            <div className="bg-green-700 rounded-3xl p-8 text-white">
+              <h3 className="font-bold text-xl mb-6 text-amber-400">Key Research Findings</h3>
+              <div className="space-y-5">
+                {[
+                  { stat: "92%", desc: "of survey respondents rated interest in soy products at 4–5 out of 5" },
+                  { stat: "80.8%", desc: "identified cost as the main barrier to consuming protein-rich foods" },
+                  { stat: "88%", desc: "of households have already consumed soy products in some form" },
+                  { stat: "89%", desc: "willing to purchase soy flour at target price of 1,000–1,200 RWF/kg" },
+                ].map((s) => (
+                  <div key={s.stat} className="flex gap-4 items-start">
+                    <div className="text-2xl font-extrabold text-amber-400 shrink-0 w-16">{s.stat}</div>
+                    <p className="text-green-100 text-sm leading-relaxed">{s.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pb-20">
         {/* Vision & Mission */}
         <div className="grid md:grid-cols-2 gap-8 mb-20">
-          <div className="relative bg-blue-700 rounded-3xl p-8 text-white overflow-hidden">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-10 translate-x-10" />
-            <div className="relative">
-              <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-5">
-                <Eye className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-2xl font-bold mb-3">Vision Statement</h2>
-              <p className="text-blue-100 leading-relaxed">
-                To become the leading school-based adolescent counseling and mentorship social enterprise in rural Rwanda by 2030, setting the national standard for accessible, high-quality mental health support, career guidance, and opportunity readiness for secondary school students.
-              </p>
+          <div className="bg-green-700 rounded-3xl p-8 text-white">
+            <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-5">
+              <Eye className="w-6 h-6 text-white" />
             </div>
+            <h2 className="text-2xl font-bold mb-3">Vision Statement</h2>
+            <p className="text-green-100 leading-relaxed">
+              A Rwanda where every child grows up healthy, nourished, and free from malnutrition,
+              supported by sustainable, community-driven food systems that ensure access to affordable,
+              nutritious diets for all households.
+            </p>
           </div>
 
-          <div className="relative bg-amber-500 rounded-3xl p-8 text-white overflow-hidden">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-10 translate-x-10" />
-            <div className="relative">
-              <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-5">
-                <Zap className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-2xl font-bold mb-3">Mission Statement</h2>
-              <p className="text-amber-50 leading-relaxed">
-                Chance for All exists to address the gap in accessible, structured mental health and career readiness support for secondary school students in rural Rwanda — through a sustainable cross-subsidy model that engages paying families while supporting vulnerable and abandoned teenagers.
-              </p>
+          <div className="bg-amber-600 rounded-3xl p-8 text-white">
+            <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-5">
+              <Target className="w-6 h-6 text-white" />
             </div>
+            <h2 className="text-2xl font-bold mb-3">Mission Statement</h2>
+            <p className="text-amber-50 leading-relaxed">
+              To combat child malnutrition in Rwanda by delivering affordable, protein-rich soy foods
+              while empowering farmers and communities through sustainable nutrition and agricultural solutions.
+            </p>
           </div>
         </div>
 
-        {/* Overview */}
+        {/* Overview stats */}
         <div className="bg-gray-50 rounded-3xl p-8 sm:p-12 mb-20">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Program Overview</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Business Overview</h2>
           <p className="text-gray-600 leading-relaxed max-w-4xl mb-8">
-            Chance for All is a school-based counseling and mentorship social enterprise established in September 2025 in Nyamasheke District, Rwanda. Since its launch, foundational operational systems have been developed, including a structured counseling and mentorship framework, safeguarding and ethical compliance procedures, stakeholder engagement processes, and monitoring and evaluation tools.
+            SoyaThrive Initiative is a social enterprise focused on reducing chronic malnutrition among children
+            under five in Rwanda, starting in Ngororero District. Foundational research has been completed including
+            household nutrition surveys, stakeholder interviews, and market validation. The next phase involves
+            registration with RDB, establishing the processing facility, and launching pilot production.
           </p>
           <div className="grid sm:grid-cols-3 gap-6">
             {[
-              { label: "40.8%", desc: "of schools don't currently offer mentorship or counseling" },
-              { label: "49%", desc: "rate current mental health support as inadequate or very inadequate" },
-              { label: "74.5%", desc: "of parents willing to pay for structured mentorship services" },
+              { label: "120", desc: "Households surveyed in Ngororero District (Feb 2026)" },
+              { label: "95,000", desc: "Total households in Ngororero — our starting market" },
+              { label: "150–200", desc: "ECD centers and schools targeted for institutional supply" },
             ].map((s) => (
               <div key={s.label} className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm text-center">
-                <div className="text-3xl font-extrabold text-blue-600 mb-1">{s.label}</div>
+                <div className="text-3xl font-extrabold text-green-700 mb-1">{s.label}</div>
                 <div className="text-sm text-gray-500">{s.desc}</div>
               </div>
             ))}
@@ -121,10 +166,10 @@ export default function About() {
 
         {/* Core Values */}
         <div className="mb-20">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Core Values</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Our Core Values</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((v) => (
-              <div key={v.title} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-blue-200 transition-all">
+              <div key={v.title} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-green-200 transition-all">
                 <div className={`w-12 h-12 ${v.bg} rounded-xl flex items-center justify-center mb-3`}>
                   <v.Icon className={`w-6 h-6 ${v.color}`} />
                 </div>
@@ -154,34 +199,19 @@ export default function About() {
           </div>
         </div>
 
-        {/* Team — with photos */}
+        {/* Team */}
         <div className="mb-20">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Meet Our Team</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Our Team</h2>
           <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {team.map((t) => (
               <div key={t.name} className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                {/* Photo */}
-                <div className="relative h-56 bg-blue-50">
-                  <img
-                    src={t.photo}
-                    alt={t.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      const target = e.currentTarget as HTMLImageElement;
-                      target.style.display = "none";
-                      const fallback = target.nextElementSibling as HTMLElement;
-                      if (fallback) fallback.style.display = "flex";
-                    }}
-                  />
-                  {/* Fallback avatar */}
-                  <div className="absolute inset-0 bg-blue-600 items-center justify-center hidden">
-                    <span className="text-white font-extrabold text-5xl">{t.initials}</span>
-                  </div>
+                <div className="h-32 bg-green-700 flex items-center justify-center">
+                  <span className="text-white font-extrabold text-5xl">{t.initials}</span>
                 </div>
                 <div className="p-6 text-center">
                   <div className="flex items-center justify-center gap-2 mb-1">
-                    <GraduationCap className="w-4 h-4 text-blue-600" />
-                    <div className="text-blue-600 font-medium text-sm">{t.role}</div>
+                    <GraduationCap className="w-4 h-4 text-green-700" />
+                    <div className="text-green-700 font-medium text-sm">{t.role}</div>
                   </div>
                   <h3 className="font-bold text-gray-900 text-lg mb-0.5">{t.name}</h3>
                   <div className="text-gray-400 text-xs mb-4">{t.id}</div>
@@ -192,51 +222,25 @@ export default function About() {
           </div>
         </div>
 
-        {/* Community photos */}
-        <div className="mb-20">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Our Impact in Action</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              { src: "/impact1.jpg", label: "Group mentorship sessions" },
-              { src: "/impact2.jpg", label: "Life-skills workshops" },
-              { src: "/impact3.jpg", label: "School partnership" },
-              { src: "/impact4.jpg", label: "Career guidance day" },
-              { src: "/impact5.jpg", label: "Community outreach" },
-              { src: "/impact6.jpg", label: "Student celebrations" },
-            ].map((img) => (
-              <div key={img.src} className="relative rounded-2xl overflow-hidden h-48 bg-blue-100 group">
-                <img
-                  src={img.src}
-                  alt={img.label}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-blue-900/30 flex items-end p-4">
-                  <span className="text-white font-semibold text-sm drop-shadow">{img.label}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* WhatsApp + CTA */}
-        <div className="bg-blue-800 rounded-3xl p-8 sm:p-12 text-white text-center">
+        {/* CTA */}
+        <div className="bg-green-700 rounded-3xl p-8 sm:p-12 text-white text-center">
           <Users className="w-12 h-12 text-amber-400 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-3">Want to Know More?</h2>
-          <p className="text-blue-200 mb-8 max-w-xl mx-auto">
-            Reach out to us directly via WhatsApp, or explore our services and funding pages to learn how you can get involved.
+          <p className="text-green-200 mb-8 max-w-xl mx-auto">
+            Reach out via WhatsApp, or explore our products and funding pages to learn how you can get involved.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/services"
+              to="/products"
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-xl transition-all"
             >
-              Explore Our Services <ChevronRight className="w-4 h-4" />
+              Explore Our Products <ChevronRight className="w-4 h-4" />
             </Link>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition-all"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-white/15 hover:bg-white/25 border border-white/25 text-white font-bold rounded-xl transition-all"
             >
               <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
             </a>

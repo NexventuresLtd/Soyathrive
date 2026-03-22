@@ -3,48 +3,32 @@ interface PageHeroProps {
   title: string;
   highlight?: string;
   subtitle: string;
-  badgeColor?: string;
+  color?: "green" | "amber" | "dark";
 }
 
-export default function PageHero({ badge, title, highlight, subtitle, badgeColor = "blue" }: PageHeroProps) {
-  const bgColors: Record<string, string> = {
-    blue: "bg-blue-800",
-    emerald: "bg-blue-800",
+export default function PageHero({ badge, title, highlight, subtitle, color = "green" }: PageHeroProps) {
+  const bgColors = {
+    green: "bg-green-700",
     amber: "bg-amber-700",
-    purple: "bg-blue-900",
-    rose: "bg-blue-800",
-    green: "bg-blue-700",
+    dark: "bg-gray-900",
   };
 
-  const badgeBg: Record<string, string> = {
-    blue: "bg-blue-700/60 text-blue-100 border-blue-500",
-    emerald: "bg-blue-700/60 text-blue-100 border-blue-500",
-    amber: "bg-amber-600/60 text-amber-100 border-amber-500",
-    purple: "bg-blue-800/60 text-blue-200 border-blue-600",
-    rose: "bg-blue-700/60 text-blue-100 border-blue-500",
-    green: "bg-blue-600/60 text-blue-100 border-blue-400",
+  const badgeStyles = {
+    green: "bg-green-800 text-green-100 border-green-500",
+    amber: "bg-amber-800 text-amber-100 border-amber-500",
+    dark: "bg-gray-800 text-gray-100 border-gray-600",
   };
 
   return (
-    <div className={`relative ${bgColors[badgeColor] || bgColors.blue} py-20 px-6 text-center overflow-hidden`}>
-      <div className="absolute inset-0 opacity-10">
-        <svg width="100%" height="100%">
-          <defs>
-            <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse">
-              <circle cx="20" cy="20" r="1" fill="white" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots)" />
-        </svg>
-      </div>
-      <div className="relative z-10 max-w-3xl mx-auto">
-        <span className={`inline-block text-xs font-bold uppercase tracking-widest border px-3 py-1 rounded-full mb-5 ${badgeBg[badgeColor] || badgeBg.blue}`}>
+    <div className={`${bgColors[color]} py-20 px-6 text-center`}>
+      <div className="max-w-3xl mx-auto">
+        <span className={`inline-block text-xs font-bold uppercase tracking-widest border px-3 py-1 rounded-full mb-5 ${badgeStyles[color]}`}>
           {badge}
         </span>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
           {title} {highlight && <span className="text-amber-400">{highlight}</span>}
         </h1>
-        <p className="text-lg text-white/70 max-w-xl mx-auto">{subtitle}</p>
+        <p className="text-lg text-white/75 max-w-xl mx-auto">{subtitle}</p>
       </div>
     </div>
   );

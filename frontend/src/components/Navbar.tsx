@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
+
+const WHATSAPP_NUMBER = "250780000000";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.`;
 
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
-  { label: "Services", to: "/services" },
+  { label: "Products", to: "/products" },
   { label: "Market", to: "/market" },
   { label: "Operations", to: "/operations" },
   { label: "Funding", to: "/funding" },
-  { label: "Acronyms", to: "/acronyms" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -26,23 +28,23 @@ export default function Navbar() {
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     `px-3 py-1.5 text-sm rounded-lg transition-all font-medium ${
       isActive
-        ? "bg-blue-100 text-blue-800 font-semibold"
-        : "text-gray-600 hover:text-blue-700 hover:bg-blue-50"
+        ? "bg-green-100 text-green-800 font-semibold"
+        : "text-gray-600 hover:text-green-700 hover:bg-green-50"
     }`;
 
   const mobileLinkClass = ({ isActive }: { isActive: boolean }) =>
     `px-3 py-2.5 text-sm rounded-lg transition-all font-medium block ${
       isActive
-        ? "bg-blue-50 text-blue-800 font-semibold border-l-2 border-blue-500 pl-3"
-        : "text-gray-700 hover:text-blue-700 hover:bg-blue-50"
+        ? "bg-green-50 text-green-800 font-semibold border-l-2 border-green-600 pl-3"
+        : "text-gray-700 hover:text-green-700 hover:bg-green-50"
     }`;
 
   return (
     <nav
-      className={`fixed top-0.5 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur shadow-md border-b border-gray-100"
-          : "bg-white/90 backdrop-blur border-b border-blue-50"
+          ? "bg-white shadow-md border-b border-gray-100"
+          : "bg-white border-b border-green-100"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
@@ -50,12 +52,12 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-2.5 shrink-0">
           <img
             src="/logo.png"
-            alt="CHANCE For ALL"
+            alt="SoyaThrive Initiative"
             className="h-10 w-auto object-contain"
           />
           <div className="hidden sm:block">
-            <span className="font-extrabold text-blue-800 text-base">CHANCE</span>
-            <span className="font-bold text-amber-500 text-base"> For ALL</span>
+            <span className="font-extrabold text-green-800 text-base">Soya</span>
+            <span className="font-bold text-amber-600 text-base">Thrive</span>
           </div>
         </Link>
 
@@ -68,16 +70,19 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* CTA + hamburger */}
+        {/* WhatsApp CTA + hamburger */}
         <div className="flex items-center gap-3">
-          <Link
-            to="/contact"
-            className="hidden sm:inline-flex items-center px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm"
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-2 px-4 py-1.5 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-lg transition-colors"
           >
-            Get Involved
-          </Link>
+            <MessageCircle className="w-4 h-4" />
+            WhatsApp
+          </a>
           <button
-            className="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-blue-50 transition-colors"
+            className="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-green-50 transition-colors"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -104,13 +109,16 @@ export default function Navbar() {
               {l.label}
             </NavLink>
           ))}
-          <Link
-            to="/contact"
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className="mt-2 px-3 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg text-center transition-colors"
+            className="mt-2 flex items-center justify-center gap-2 px-3 py-2.5 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-lg transition-colors"
           >
-            Get Involved
-          </Link>
+            <MessageCircle className="w-4 h-4" />
+            Chat on WhatsApp
+          </a>
         </div>
       </div>
     </nav>

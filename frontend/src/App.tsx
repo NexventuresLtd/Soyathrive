@@ -12,7 +12,6 @@ import Services from "./pages/Services";
 import Market from "./pages/Market";
 import Operations from "./pages/Operations";
 import Funding from "./pages/Funding";
-import Acronyms from "./pages/Acronyms";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -27,11 +26,10 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
+            <Route path="/products" element={<Services />} />
             <Route path="/market" element={<Market />} />
             <Route path="/operations" element={<Operations />} />
             <Route path="/funding" element={<Funding />} />
-            <Route path="/acronyms" element={<Acronyms />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

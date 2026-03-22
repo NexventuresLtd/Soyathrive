@@ -1,22 +1,24 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, MessageCircle, MapPin, Landmark, Calendar, Heart } from "lucide-react";
+import { MessageCircle, MapPin, Landmark, Calendar, Heart, Leaf } from "lucide-react";
 
-// Replace with the actual WhatsApp number: +250XXXXXXXXX
 const WHATSAPP_NUMBER = "250780000000";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.`;
 
 const links = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
-  { label: "Services", to: "/services" },
+  { label: "Products", to: "/products" },
   { label: "Market Analysis", to: "/market" },
   { label: "Operations", to: "/operations" },
   { label: "Funding", to: "/funding" },
-  { label: "Acronyms", to: "/acronyms" },
   { label: "Contact", to: "/contact" },
 ];
 
-const sdgs = ["SDG 3 — Good Health & Well-being", "SDG 4 — Quality Education"];
+const sdgs = [
+  "SDG 2 — Zero Hunger",
+  "SDG 3 — Good Health & Well-being",
+  "SDG 8 — Decent Work & Economic Growth",
+];
 
 export default function Footer() {
   return (
@@ -26,35 +28,18 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2.5 mb-4">
-              <img src="/logo.png" alt="CHANCE For ALL" className="h-10 w-auto object-contain" />
+              <img src="/logo.png" alt="SoyaThrive Initiative" className="h-10 w-auto object-contain" />
               <div>
-                <span className="font-extrabold text-white text-lg">CHANCE</span>
-                <span className="font-bold text-amber-400 text-lg"> For ALL</span>
+                <span className="font-extrabold text-white text-lg">Soya</span>
+                <span className="font-bold text-amber-400 text-lg">Thrive</span>
+                <span className="font-medium text-gray-400 text-sm ml-1">Initiative</span>
               </div>
             </div>
             <p className="text-sm leading-relaxed mb-5 max-w-sm">
-              A school-based counseling and mentorship social enterprise in Nyamasheke District, Rwanda.
-              Empowering adolescents with professional emotional support, structured mentorship, and career readiness.
+              A community-based social enterprise in Ngororero District, Rwanda, producing affordable
+              soy-based foods to combat child malnutrition and empower local farmers.
             </p>
             <div className="flex gap-3">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Facebook"
-                className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-blue-700 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Instagram"
-                className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-pink-600 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
@@ -64,6 +49,13 @@ export default function Footer() {
               >
                 <MessageCircle className="w-4 h-4" />
               </a>
+              <Link
+                to="/funding"
+                title="Support Us"
+                className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-amber-600 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+              >
+                <Leaf className="w-4 h-4" />
+              </Link>
             </div>
           </div>
 
@@ -75,7 +67,7 @@ export default function Footer() {
                 <li key={l.to}>
                   <Link
                     to={l.to}
-                    className="text-sm hover:text-blue-400 transition-colors"
+                    className="text-sm hover:text-green-400 transition-colors"
                     onClick={() => window.scrollTo(0, 0)}
                   >
                     {l.label}
@@ -93,7 +85,7 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
                 <div>
                   <div className="text-gray-500 text-xs mb-0.5">Location</div>
-                  <div className="text-gray-300">Nyamasheke District, Rwanda</div>
+                  <div className="text-gray-300">Ngororero District, Rwanda</div>
                 </div>
               </li>
               <li className="flex items-start gap-2">
@@ -106,14 +98,14 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <Calendar className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
                 <div>
-                  <div className="text-gray-500 text-xs mb-0.5">Established</div>
-                  <div className="text-gray-300">September 2025</div>
+                  <div className="text-gray-500 text-xs mb-0.5">Submitted</div>
+                  <div className="text-gray-300">22nd March, 2026</div>
                 </div>
               </li>
               <li>
                 <div className="text-gray-500 text-xs mb-1">SDG Alignment</div>
                 {sdgs.map((s) => (
-                  <div key={s} className="text-xs text-blue-400 mb-0.5">{s}</div>
+                  <div key={s} className="text-xs text-green-400 mb-0.5">{s}</div>
                 ))}
               </li>
             </ul>
@@ -124,7 +116,9 @@ export default function Footer() {
         <div className="bg-gray-900 rounded-2xl px-6 py-4 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <MessageCircle className="w-5 h-5 text-green-400" />
-            <span className="text-sm text-gray-300">Have questions? Chat with us directly on WhatsApp.</span>
+            <span className="text-sm text-gray-300">
+              Want to partner, donate, or learn more? Chat with us directly on WhatsApp.
+            </span>
           </div>
           <a
             href={WHATSAPP_URL}
@@ -139,11 +133,11 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600">
           <p>
-            © 2026 CHANCE For ALL · Chancelline Niyotugendana · Student ID: 745770020
+            © 2026 SoyaThrive Initiative · Jean Paul Bukuru · Student ID: 256897847
           </p>
           <p className="flex items-center gap-1">
-            Made with <Heart className="w-3 h-3 text-red-500" /> for Rwanda's youth ·
-            Supervisor: Kellia Marie Reine Isaro · ALU
+            Made with <Heart className="w-3 h-3 text-red-500" /> for Rwanda's children ·
+            Supervisor: Dr. Chioma Joy Okonkwo · ALU
           </p>
         </div>
       </div>

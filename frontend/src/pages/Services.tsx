@@ -1,207 +1,161 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart, Sprout, Target, HandHeart, Check, ChevronRight, MessageCircle } from "lucide-react";
+import { Wheat, Coffee, Milk, Cookie, BookOpen, Check, ChevronRight, MessageCircle } from "lucide-react";
 import PageHero from "../components/ui/PageHero";
 
-const WHATSAPP_URL = "https://wa.me/250780000000";
+const WHATSAPP_URL =
+  "https://wa.me/250780000000?text=Hello%20SoyaThrive%2C%20I%20am%20interested%20in%20your%20soy%20products.";
 
-const services = [
+const products = [
   {
-    id: "counseling",
-    Icon: Heart,
-    iconColor: "text-rose-600",
-    iconBg: "bg-rose-100",
-    headerBg: "bg-rose-600",
-    bg: "bg-rose-50",
-    border: "border-rose-200",
-    accent: "text-rose-600",
-    label: "A",
-    title: "School-Based Counseling",
-    subtitle: "Emotional Well-being Support",
-    focus: "Provide safe and confidential counseling support that strengthens emotional resilience and mental well-being among teenagers.",
-    approach: [
-      "Professional counseling sessions within school environments",
-      "One-on-one private counseling for individual support",
-      "Group emotional support sessions to build peer resilience",
-      "Collaboration with teachers to identify students needing support",
-    ],
-    impact: "Students gain improved emotional stability, stronger self-confidence, and better focus in their academic and personal lives.",
-    partner: "Solid Minds Clinic",
-  },
-  {
-    id: "mentorship",
-    Icon: Sprout,
-    iconColor: "text-blue-600",
-    iconBg: "bg-blue-100",
-    headerBg: "bg-blue-600",
-    bg: "bg-blue-50",
-    border: "border-blue-200",
-    accent: "text-blue-600",
-    label: "B",
-    title: "Mentorship Programs",
-    subtitle: "Personal Development",
-    focus: "Strengthen teenagers' confidence, leadership abilities, and personal development through structured mentorship.",
-    approach: [
-      "Regular mentorship sessions with trained mentors",
-      "Workshops on leadership, communication, and goal setting",
-      "Peer mentorship circles for collaborative learning",
-      "Exposure to positive role models and professional guidance",
-    ],
-    impact: "Students develop stronger self-esteem, improved decision-making, and a supportive guidance network.",
-    partner: "Trained Mentor Network",
-  },
-  {
-    id: "career",
-    Icon: Target,
-    iconColor: "text-amber-600",
-    iconBg: "bg-amber-100",
-    headerBg: "bg-amber-600",
-    bg: "bg-amber-50",
-    border: "border-amber-200",
-    accent: "text-amber-600",
-    label: "C",
-    title: "Career Guidance",
-    subtitle: "Opportunity Readiness Training",
-    focus: "Prepare teenagers for higher education and employment through structured career-readiness programs.",
-    approach: [
-      "Career exploration sessions introducing professional pathways",
-      "Guidance on university applications, scholarships, and training",
-      "Workshops on goal-setting and professional communication",
-      "Opportunity-readiness training for internships and employment",
-    ],
-    impact: "Students gain clarity on career choices, increased motivation to succeed academically, and better future preparedness.",
-    partner: "Community Professionals",
-  },
-  {
-    id: "support",
-    Icon: HandHeart,
-    iconColor: "text-green-600",
-    iconBg: "bg-green-100",
+    Icon: Wheat,
+    label: "Product 1",
+    title: "Fortified Soy Flour",
+    subtitle: "Everyday Nutrition",
     headerBg: "bg-green-700",
     bg: "bg-green-50",
     border: "border-green-200",
-    accent: "text-green-600",
-    label: "D",
-    title: "Support for Vulnerable Teens",
-    subtitle: "For Those Who Need It Most",
-    focus: "Reduce barriers that prevent vulnerable teenagers from continuing their education.",
-    approach: [
-      "Partial assistance for school-related needs",
-      "Tailored mentorship for abandoned students",
-      "Partnerships with schools and community organizations",
-      "Support funded through cross-subsidy model and donations",
+    accent: "text-green-700",
+    desc: "Protein-rich flour made from processed soybeans that can be mixed with other flours to prepare porridge, bread, and other local meals.",
+    features: [
+      "High protein content to combat child malnutrition",
+      "Can be blended with cassava, maize or sorghum flour",
+      "Safe and hygienically packaged with clear nutritional labeling",
+      "Target price: 800–1,200 RWF per kilogram",
+      "89% of survey respondents willing to buy at this price",
     ],
-    impact: "Vulnerable teenagers receive support to remain in school, strengthen emotional well-being, and pursue better opportunities.",
-    partner: "NGO & Community Partners",
+    interest: "4.21 / 5",
+  },
+  {
+    Icon: Coffee,
+    label: "Product 2",
+    title: "Soy Porridge Mix",
+    subtitle: "Ready-to-Cook for Children",
+    headerBg: "bg-amber-600",
+    bg: "bg-amber-50",
+    border: "border-amber-200",
+    accent: "text-amber-700",
+    desc: "A ready-to-cook nutritious porridge made from soy and other grains, designed especially for children and families for easy daily preparation.",
+    features: [
+      "Highest community interest rating: 4.48 / 5",
+      "Designed for children under five years old",
+      "Quick and easy preparation — fits existing cooking habits",
+      "Fortified with essential micronutrients",
+      "Distributed through schools, health centers, and cooperatives",
+    ],
+    interest: "4.48 / 5",
+  },
+  {
+    Icon: Milk,
+    label: "Product 3",
+    title: "Soy Milk",
+    subtitle: "Plant-Based Protein Alternative",
+    headerBg: "bg-green-700",
+    bg: "bg-green-50",
+    border: "border-green-200",
+    accent: "text-green-700",
+    desc: "A plant-based milk alternative made from soybeans that provides affordable protein and essential nutrients — an accessible substitute for animal milk.",
+    features: [
+      "Affordable alternative to expensive cow's milk",
+      "Rich in protein and essential amino acids",
+      "Suitable for the whole family, especially children",
+      "Locally produced reducing supply chain costs",
+      "Rated 3.87 / 5 by survey respondents",
+    ],
+    interest: "3.87 / 5",
+  },
+  {
+    Icon: Cookie,
+    label: "Product 4",
+    title: "Roasted Soy Snacks",
+    subtitle: "Healthy On-the-Go Snack",
+    headerBg: "bg-amber-600",
+    bg: "bg-amber-50",
+    border: "border-amber-200",
+    accent: "text-amber-700",
+    desc: "Roasted soybeans packaged as a healthy, protein-rich snack option — ideal for school-aged children and families looking for nutritious alternatives.",
+    features: [
+      "High protein snack replacing unhealthy processed options",
+      "Good source of fiber and essential fatty acids",
+      "Convenient packaging for school and community use",
+      "Distributed through local retailers and ECD centers",
+      "Rated 3.74 / 5 by survey respondents",
+    ],
+    interest: "3.74 / 5",
   },
 ];
 
-const demandData = [
-  { label: "Life-Skills Training", pct: 76.4 },
-  { label: "Career Guidance & Mentorship", pct: 70.8 },
-  { label: "Professional Counseling", pct: 63.2 },
-  { label: "Academic Coaching", pct: 44.0 },
-  { label: "Peer Support Programs", pct: 38.5 },
+const interestData = [
+  { label: "Soy Porridge Mix", value: 4.48, pct: 89.6 },
+  { label: "Fortified Soy Flour", value: 4.21, pct: 84.2 },
+  { label: "Soy Milk", value: 3.87, pct: 77.4 },
+  { label: "Roasted Soy Snacks", value: 3.74, pct: 74.8 },
 ];
 
-const barColors = ["bg-blue-600", "bg-blue-500", "bg-amber-500", "bg-blue-400", "bg-amber-400"];
-
 export default function Services() {
-  const [active, setActive] = useState<string | null>(null);
-
   return (
     <>
       <PageHero
-        badge="Services"
-        title="Integrated Support"
-        highlight="Model"
-        subtitle="Four key service components delivered directly within partner schools — ensuring accessibility, consistency, and engagement."
-        badgeColor="blue"
+        badge="Our Products"
+        title="Soy-Based"
+        highlight="Nutrition"
+        subtitle="Affordable, locally produced, and nutritious soy foods designed to combat protein deficiency and child malnutrition in Ngororero District."
+        color="green"
       />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
-        {/* Tab navigation */}
-        <div className="flex flex-wrap gap-2 mb-12 justify-center">
-          <button
-            onClick={() => setActive(null)}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
-              active === null ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-            }`}
-          >
-            All Services
-          </button>
-          {services.map((s) => (
-            <button
-              key={s.id}
-              onClick={() => setActive(active === s.id ? null : s.id)}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
-                active === s.id ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
-              <s.Icon className="w-4 h-4" /> {s.title}
-            </button>
+        {/* Product cards */}
+        <div className="grid md:grid-cols-2 gap-8 mb-20">
+          {products.map((p) => (
+            <div key={p.title} className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+              <div className={`${p.headerBg} p-6 flex items-start gap-4`}>
+                <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center shrink-0">
+                  <p.Icon className="w-6 h-6 text-white" />
+                </div>
+                <div className="text-white">
+                  <div className="text-xs font-bold uppercase tracking-widest opacity-70 mb-0.5">{p.label}</div>
+                  <h3 className="text-xl font-bold">{p.title}</h3>
+                  <div className="text-sm opacity-80">{p.subtitle}</div>
+                </div>
+              </div>
+              <div className="p-6">
+                <p className="text-sm text-gray-600 leading-relaxed mb-4 border-l-2 border-gray-200 pl-3 italic">{p.desc}</p>
+                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Key Features</h4>
+                <ul className="space-y-2 mb-5">
+                  {p.features.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
+                      <Check className={`w-4 h-4 ${p.accent} mt-0.5 shrink-0`} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className={`${p.bg} rounded-xl p-3 border ${p.border}`}>
+                  <span className="text-xs font-bold text-gray-500 uppercase tracking-wide">Community Interest: </span>
+                  <span className={`text-sm font-bold ${p.accent}`}>{p.interest}</span>
+                  <span className="text-xs text-gray-400"> out of 5.0</span>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* Service cards */}
-        <div className="grid md:grid-cols-2 gap-8 mb-20">
-          {services
-            .filter((s) => active === null || active === s.id)
-            .map((s) => (
-              <div key={s.id} className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-                <div className={`${s.headerBg} p-6 flex items-start gap-4`}>
-                  <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center shrink-0">
-                    <s.Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-white">
-                    <div className="text-xs font-bold uppercase tracking-widest opacity-70 mb-0.5">Component {s.label}</div>
-                    <h3 className="text-xl font-bold">{s.title}</h3>
-                    <div className="text-sm opacity-80">{s.subtitle}</div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-sm font-medium text-gray-600 italic mb-4 border-l-2 border-gray-200 pl-3">{s.focus}</p>
-
-                  <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Our Approach</h4>
-                  <ul className="space-y-2 mb-5">
-                    {s.approach.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
-                        <Check className={`w-4 h-4 ${s.accent} mt-0.5 shrink-0`} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className={`${s.bg} rounded-xl p-3 border ${s.border} mb-3`}>
-                    <span className="text-xs font-bold text-gray-500 uppercase tracking-wide">Impact: </span>
-                    <span className="text-xs text-gray-600">{s.impact}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-400">Partner:</span>
-                    <span className={`text-xs font-semibold ${s.accent}`}>{s.partner}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-        </div>
-
-        {/* Service Validation */}
+        {/* Interest chart */}
         <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 sm:p-10 mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Service Validation</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Community Interest in Products</h2>
           <p className="text-gray-500 text-sm mb-8">
-            Survey results (Feb 2026) — most valued services among parents and students in Nyamasheke District.
+            Survey results (Feb 2026) — respondent interest scores when asked about purchasing soy products
+            if affordable and locally available (scale of 1–5).
           </p>
           <div className="space-y-6">
-            {demandData.map((d, i) => (
+            {interestData.map((d) => (
               <div key={d.label}>
                 <div className="flex justify-between text-sm mb-1.5">
                   <span className="font-medium text-gray-700">{d.label}</span>
-                  <span className="font-bold text-blue-600">{d.pct}%</span>
+                  <span className="font-bold text-green-700">{d.value} / 5.0</span>
                 </div>
                 <div className="h-3.5 bg-gray-100 rounded-full overflow-hidden">
                   <div
-                    className={`h-full rounded-full ${barColors[i]} transition-all duration-700`}
-                    style={{ width: `${d.pct}%`, transitionDelay: `${i * 100}ms` }}
+                    className="h-full rounded-full bg-green-600 transition-all duration-700"
+                    style={{ width: `${d.pct}%` }}
                   />
                 </div>
               </div>
@@ -209,29 +163,34 @@ export default function Services() {
           </div>
         </div>
 
-        {/* Cross-subsidy explainer */}
-        <div className="bg-blue-900 rounded-3xl p-8 sm:p-12 text-white">
+        {/* Nutrition education service */}
+        <div className="bg-green-700 rounded-3xl p-8 sm:p-12 text-white mb-16">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <span className="inline-block text-xs font-bold uppercase tracking-widest text-blue-300 bg-blue-800/50 px-3 py-1 rounded-full mb-4">
-                Dual-Impact Model
+              <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-5">
+                <BookOpen className="w-7 h-7 text-white" />
+              </div>
+              <span className="inline-block text-xs font-bold uppercase tracking-widest text-green-300 bg-green-800/50 px-3 py-1 rounded-full mb-4">
+                Community Service
               </span>
-              <h2 className="text-2xl font-bold mb-4">How the Cross-Subsidy Works</h2>
-              <p className="text-blue-200 text-sm leading-relaxed mb-6">
-                Families who can afford to pay for structured mentorship and counseling services do so. This revenue directly funds free services for abandoned or vulnerable teenagers who cannot pay — creating a sustainable, self-reinforcing cycle of impact.
+              <h2 className="text-2xl font-bold mb-4">Nutrition Education & Farmer Capacity Building</h2>
+              <p className="text-green-100 text-sm leading-relaxed mb-6">
+                Beyond selling products, SoyaThrive provides nutrition education to caregivers — helping them
+                understand the benefits of soy foods and encouraging long-term dietary behavior change.
+                We also train local farmers on improved soybean cultivation practices.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
-                  to="/contact"
+                  to="/operations"
                   className="inline-flex items-center gap-2 px-6 py-2.5 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-xl text-sm transition-all"
                 >
-                  Enroll Your Child <ChevronRight className="w-4 h-4" />
+                  See Our Operations <ChevronRight className="w-4 h-4" />
                 </Link>
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl text-sm transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-white/15 hover:bg-white/25 border border-white/25 text-white font-bold rounded-xl text-sm transition-all"
                 >
                   <MessageCircle className="w-4 h-4" /> WhatsApp Us
                 </a>
@@ -239,16 +198,37 @@ export default function Services() {
             </div>
             <div className="space-y-4">
               {[
-                { label: "Paying Clients", desc: "Students from financially stable families enrolled in premium mentorship & counseling.", color: "bg-amber-400/20 border-amber-400/30" },
-                { label: "→ Revenue Generated", desc: "Term-based fees collected via mobile money, reinvested into the program.", color: "bg-white/10 border-white/10" },
-                { label: "Subsidized Beneficiaries", desc: "Abandoned & vulnerable teenagers receive the same quality services at no cost.", color: "bg-blue-400/20 border-blue-400/30" },
+                { title: "Cooking Demonstrations", desc: "Hands-on workshops showing families how to prepare soy foods in their daily meals." },
+                { title: "CHW Nutrition Sessions", desc: "Community Health Workers deliver nutrition education alongside product distribution." },
+                { title: "Farmer Training", desc: "Capacity building on improved soybean cultivation, post-harvest handling, and market linkages." },
+                { title: "School Programs", desc: "Integration with ECD centers and primary schools to improve children's diets at scale." },
               ].map((s) => (
-                <div key={s.label} className={`${s.color} border rounded-2xl p-4`}>
-                  <div className="text-sm font-bold text-white mb-1">{s.label}</div>
-                  <div className="text-xs text-blue-200">{s.desc}</div>
+                <div key={s.title} className="bg-white/10 border border-white/15 rounded-2xl p-4">
+                  <div className="text-sm font-bold text-amber-300 mb-1">{s.title}</div>
+                  <div className="text-xs text-green-100 leading-relaxed">{s.desc}</div>
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Differentiators */}
+        <div className="bg-gray-50 rounded-3xl p-8 sm:p-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Product Differentiation</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { title: "Community Co-creation", desc: "Developed with input from mothers, CHWs, and local farmers ensuring cultural relevance." },
+              { title: "Affordable Pricing", desc: "Priced at 800–1,200 RWF/kg — accessible to the 80.8% of households citing cost as a barrier." },
+              { title: "Nutrition + Education", desc: "Every product distribution paired with cooking demos and nutritional guidance." },
+              { title: "Guaranteed Farmer Market", desc: "Contracts and training for soy farmers ensuring consistent supply and fair income." },
+              { title: "Quality & Safety First", desc: "Standardized processing and hygienic packaging that builds consumer trust." },
+              { title: "Scalable Model", desc: "Community-based model replicable across Gakenke, Nyamagabe, and other high-malnutrition districts." },
+            ].map((d) => (
+              <div key={d.title} className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+                <h3 className="font-bold text-gray-900 text-sm mb-2">{d.title}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed">{d.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
