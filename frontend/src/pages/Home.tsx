@@ -1,247 +1,114 @@
 import { Link } from "react-router-dom";
-import { Wheat, Heart, Users, ChevronRight, MessageCircle, Leaf, ShieldCheck, ChevronDown } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
+import { useInView } from "../hooks/useInView";
+import { useStaggeredInView } from "../hooks/useStaggeredInView";
 import { useCountUp } from "../hooks/useCountUp";
+import Eyebrow from "../components/ui/Eyebrow";
 
 const WHATSAPP_URL =
   "https://wa.me/250780000000?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.";
 
-function StatCard({ value, suffix = "", label }: { value: number; suffix?: string; label: string }) {
-  const { count, ref } = useCountUp(value);
+const barriers = [
+  { label: "Cost / Price", pct: 80.8 },
+  { label: "Limited Availability", pct: 65.4 },
+  { label: "Lack of Knowledge", pct: 48.1 },
+  { label: "Cultural Preference", pct: 23.1 },
+  { label: "Taste", pct: 15.4 },
+];
+
+const cycle = [
+  { num: "01", title: "Local Soybeans", desc: "Sourced from smallholder farmers in Ngororero District — guaranteed market, fair income." },
+  { num: "02", title: "Fortified Foods", desc: "Processed into affordable flour, porridge, soy milk, and snacks for every household." },
+  { num: "03", title: "Healthy Children", desc: "Children grow stronger. Farmers earn more. Communities build lasting food security." },
+];
+
+const proof = [
+  { value: 52, suffix: "", label: "Households in baseline survey" },
+  { value: 89, suffix: "%", label: "Willing to buy at our price" },
+  { value: 87, suffix: "%", label: "Trust CHW nutrition advice" },
+  { value: 4.48, suffix: "/5", label: "Interest score — soy porridge" },
+];
+
+function Counter({ end, suffix, label }: { end: number; suffix: string; label: string }) {
+  const { count, ref } = useCountUp(end, 1600);
   return (
-    <div ref={ref} className="bg-white/10 border border-white/15 rounded-2xl p-4 text-center">
-      <div className="text-2xl sm:text-3xl font-extrabold text-amber-400">
+    <div ref={ref} className="py-8 px-6 border-r border-b border-gray-200 last:border-r-0">
+      <div className="text-3xl sm:text-4xl font-black text-gray-950 tracking-tight [font-variant-numeric:tabular-nums] mb-1">
         {count}{suffix}
       </div>
-      <div className="text-xs sm:text-sm text-green-100 mt-1 leading-snug">{label}</div>
+      <div className="text-xs text-gray-500 leading-snug">{label}</div>
     </div>
   );
 }
 
-const highlights = [
-  {
-    Icon: Wheat,
-    title: "Fortified Soy Products",
-    desc: "Soy flour, porridge mix, soy milk, and roasted snacks made from locally sourced soybeans.",
-    to: "/products",
-    color: "text-green-700",
-    bg: "bg-green-50",
-  },
-  {
-    Icon: Heart,
-    title: "Nutrition Education",
-    desc: "Community workshops and cooking demonstrations led by trusted Community Health Workers.",
-    to: "/products",
-    color: "text-amber-600",
-    bg: "bg-amber-50",
-  },
-  {
-    Icon: Users,
-    title: "Farmer Empowerment",
-    desc: "Partnering with smallholder farmers to build reliable soybean supply chains and income.",
-    to: "/operations",
-    color: "text-green-700",
-    bg: "bg-green-50",
-  },
-  {
-    Icon: ShieldCheck,
-    title: "Quality Assurance",
-    desc: "Standardized processing, safe packaging, and food safety compliance from day one.",
-    to: "/about",
-    color: "text-amber-600",
-    bg: "bg-amber-50",
-  },
-];
-
-const milestones = [
-  {
-    date: "Feb 2026",
-    tag: "Research",
-    title: "Market validation completed",
-    desc: "Survey of 120 respondents in Ngororero confirmed 92% interest in soy-based products.",
-  },
-  {
-    date: "Mar 2026",
-    tag: "Milestone",
-    title: "Business plan submitted to ALU",
-    desc: "Comprehensive plan submitted for Bachelor of Science in Entrepreneurial Leadership.",
-  },
-  {
-    date: "2026",
-    tag: "Next Step",
-    title: "RDB registration & pilot launch",
-    desc: "Processing facility setup, farmer agreements, and pilot production planned for 2026.",
-  },
-];
-
 export default function Home() {
+  const { ref: barrierRef, inView: barrierIn } = useInView<HTMLDivElement>();
+  const { ref: cycleRef, activeIndex: cycleIdx } = useStaggeredInView<HTMLDivElement>(3, 120);
+  const { ref: proofRef, inView: proofIn } = useInView<HTMLDivElement>();
+  const { ref: ctaRef, inView: ctaIn } = useInView<HTMLDivElement>();
+
   return (
     <>
-      {/* Hero */}
-      <section className="min-h-screen flex items-center justify-center bg-green-700">
-        <div className="max-w-5xl mx-auto px-6 text-center py-28">
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-8">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            <span className="text-green-100 text-sm font-medium">Ngororero District, Rwanda · Est. 2026</span>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
-            Soya<span className="text-amber-400">Thrive</span>
-          </h1>
-
-          <p className="text-xl sm:text-2xl text-green-100 font-medium mb-4">
-            Fighting Child Malnutrition Through Soy
-          </p>
-          <p className="max-w-2xl mx-auto text-green-200 text-base sm:text-lg mb-10 leading-relaxed">
-            A community-based social enterprise producing affordable, high-protein soy foods to nourish
-            children under five in Ngororero District — while empowering local farmers and communities.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Link
-              to="/products"
-              className="px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-white font-bold rounded-xl transition-all shadow-md text-sm sm:text-base"
-            >
-              Our Products
-            </Link>
-            <Link
-              to="/about"
-              className="px-8 py-3.5 border border-white/30 hover:border-white/60 text-white hover:bg-white/10 font-semibold rounded-xl transition-all text-sm sm:text-base"
-            >
-              Our Story
-            </Link>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3.5 bg-white/15 hover:bg-white/25 border border-white/25 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
-            >
-              <MessageCircle className="w-4 h-4" />
-              WhatsApp Us
-            </a>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            <StatCard value={92} suffix="%" label="Community Interest in Soy Products" />
-            <StatCard value={5000} suffix="+" label="Target Households by Year 3" />
-            <StatCard value={86} suffix="%" label="Community Already Aware of Soy" />
-            <StatCard value={89} suffix="%" label="Willing to Buy at Target Price" />
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-green-300 animate-bounce">
-          <span className="text-xs">Scroll</span>
-          <ChevronDown className="w-4 h-4" />
-        </div>
-      </section>
-
-      {/* Highlights */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-green-700 bg-green-50 px-3 py-1 rounded-full mb-3">
-              What We Do
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-              An Integrated Nutrition Solution
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {highlights.map((h) => (
-              <Link
-                key={h.title}
-                to={h.to}
-                className="group bg-gray-50 hover:bg-green-50 border border-gray-100 hover:border-green-200 rounded-2xl p-6 transition-all hover:shadow-md"
-              >
-                <div className={`w-12 h-12 rounded-xl ${h.bg} flex items-center justify-center mb-3`}>
-                  <h.Icon className={`w-6 h-6 ${h.color}`} />
-                </div>
-                <h3 className="font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">{h.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{h.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Survey insight */}
-      <section className="py-16 bg-green-700 text-white">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <p className="text-sm font-bold uppercase tracking-widest text-green-200 mb-3">Research Insight · Feb 2026</p>
-          <blockquote className="text-2xl sm:text-3xl font-bold leading-snug mb-6">
-            "80.8% of households cite <span className="text-amber-400">cost</span> as the main barrier
-            to accessing protein-rich foods for their children."
-          </blockquote>
-          <p className="text-green-200 mb-6 max-w-2xl mx-auto">
-            SoyaThrive addresses this gap directly — offering nutritious soy foods at prices
-            low-income families can afford.
-          </p>
-          <Link
-            to="/market"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-green-200 hover:text-white transition-colors"
-          >
-            View full market analysis
-            <ChevronRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </section>
-
-      {/* Value proposition */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* ── HERO ── */}
+      <section className="bg-white border-b border-gray-100 overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-green-800" />
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="grid lg:grid-cols-[1fr_320px] gap-12 items-center py-20 sm:py-28">
+            {/* Left */}
             <div>
-              <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full mb-4">
-                Our Approach
-              </span>
-              <h2 className="text-3xl font-extrabold text-gray-900 mb-4">
-                Community-Centered Nutrition
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                SoyaThrive is more than a food business. We combine affordable soy food production
-                with nutrition education, farmer empowerment, and community engagement — creating a
-                self-reinforcing system that improves health and livelihoods simultaneously.
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-green-800 mb-6 animate-fade-in">
+                Ngororero District, Rwanda
               </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "Products co-created with mothers, CHWs, and local farmers",
-                  "Distributed through trusted community health networks",
-                  "Soybeans sourced from Ngororero smallholder farmers",
-                  "Nutrition education paired with every product purchase",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-gray-700">
-                    <Leaf className="w-4 h-4 text-green-600 mt-0.5 shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="flex flex-col sm:flex-row gap-3">
+              <h1 className="text-display text-gray-950 mb-6 animate-fade-up delay-100 max-w-2xl">
+                Nourishing Rwanda's Future,{" "}
+                <span className="text-green-800">One Meal</span>{" "}
+                at a Time.
+              </h1>
+              <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl mb-10 animate-fade-up delay-200">
+                Affordable, locally produced soy foods — paired with education — to help every child
+                under five in Ngororero District thrive.
+              </p>
+              <div className="flex flex-wrap items-center gap-3 animate-fade-up delay-300">
                 <Link
-                  to="/about"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-green-700 hover:bg-green-800 text-white font-bold rounded-xl transition-all"
+                  to="/products"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-green-800 hover:bg-green-900 text-white text-sm font-bold transition-colors"
                 >
-                  Our Story <ChevronRight className="w-4 h-4" />
+                  Find Our Products <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  to="/partners"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 border border-gray-300 hover:border-gray-900 text-gray-700 hover:text-gray-900 text-sm font-semibold transition-colors"
+                >
+                  Partner with Us
                 </Link>
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 hover:border-green-400 text-gray-700 hover:text-green-700 font-semibold rounded-xl transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 text-gray-500 hover:text-green-800 text-sm font-medium transition-colors"
                 >
-                  <MessageCircle className="w-4 h-4 text-green-600" /> WhatsApp
+                  <MessageCircle className="w-4 h-4" /> WhatsApp
                 </a>
               </div>
             </div>
-            <div className="bg-green-700 rounded-3xl p-8 text-white">
-              <h3 className="font-bold text-lg mb-6 text-amber-400">Value Proposition</h3>
-              <div className="space-y-4">
+
+            {/* Right — stat block */}
+            <div className="hidden lg:block border border-gray-200 bg-gray-50">
+              <div className="px-6 py-5 border-b border-gray-200">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
+                  Community Survey · Feb 2026 · 52 Households
+                </p>
+              </div>
+              <div className="divide-y divide-gray-100">
                 {[
-                  { label: "For Households", text: "Affordable, nutritious soy foods that improve child health without straining family budgets." },
-                  { label: "For Farmers", text: "Reliable market access, fair prices, and capacity building for soybean cultivation." },
-                  { label: "For Communities", text: "Integrated nutrition education that drives behavior change and long-term dietary improvement." },
-                ].map((v) => (
-                  <div key={v.label} className="border-l-2 border-amber-400 pl-4">
-                    <div className="font-bold text-sm text-amber-300 mb-1">{v.label}</div>
-                    <p className="text-green-100 text-sm leading-relaxed">{v.text}</p>
+                  { num: "80.8%", label: "of families cite cost as barrier to protein-rich food" },
+                  { num: "89%", label: "willing to buy soy products at our target price" },
+                  { num: "4.48/5", label: "community interest score for soy porridge mix" },
+                  { num: "87%", label: "trust CHW recommendations for nutrition" },
+                ].map((s) => (
+                  <div key={s.label} className="px-6 py-4">
+                    <div className="text-xl font-black text-green-800 mb-0.5">{s.num}</div>
+                    <p className="text-xs text-gray-500 leading-snug">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -250,70 +117,177 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Milestones */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-10">
+      {/* ── THE PROBLEM ── */}
+      <section className="py-20 sm:py-28 bg-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Pull stat */}
             <div>
-              <span className="inline-block text-xs font-bold uppercase tracking-widest text-green-700 bg-green-50 px-3 py-1 rounded-full mb-3">
-                Progress
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">Latest Milestones</h2>
+              <Eyebrow text="The Problem" />
+              <h2 className="text-3xl sm:text-4xl font-black text-gray-950 tracking-tight mb-6">
+                Child malnutrition is a<br />solvable problem.
+              </h2>
+              <p className="text-base text-gray-500 leading-relaxed mb-6">
+                In Ngororero District, <strong className="text-gray-800 font-semibold">80.8% of families</strong> struggle
+                to afford protein-rich foods — not because nutritious food doesn't exist, but because it
+                isn't produced locally, priced affordably, or distributed where families need it most.
+              </p>
+              <p className="text-base text-gray-500 leading-relaxed mb-8">
+                Soybeans grow abundantly in Western Province. SoyaThrive closes the gap between what
+                is grown and what ends up on children's plates.
+              </p>
+              <Link
+                to="/story#problem"
+                className="inline-flex items-center gap-2 text-sm font-bold text-green-800 hover:text-green-900 transition-colors group"
+              >
+                See the full research data
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
             </div>
-            <Link to="/funding" className="text-sm text-green-700 hover:text-green-900 font-semibold hidden sm:block">
-              Support our work →
-            </Link>
+
+            {/* Barrier chart */}
+            <div ref={barrierRef}>
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400 mb-6">
+                Why families don't eat more protein foods
+              </p>
+              <div className="space-y-5">
+                {barriers.map((b) => (
+                  <div key={b.label}>
+                    <div className="flex justify-between items-baseline mb-2">
+                      <span className="text-sm font-medium text-gray-700">{b.label}</span>
+                      <span className="text-sm font-black text-green-800 [font-variant-numeric:tabular-nums]">
+                        {b.pct}%
+                      </span>
+                    </div>
+                    <div className="h-1.5 bg-gray-100 overflow-hidden">
+                      {barrierIn && (
+                        <div
+                          className="h-full bg-green-800 animate-bar-fill"
+                          style={{ "--target-width": `${b.pct}%` } as React.CSSProperties}
+                        />
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-[11px] text-gray-400 mt-4">
+                Source: SoyaThrive community survey, Feb 2026 (n=52)
+              </p>
+            </div>
           </div>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {milestones.map((n) => (
-              <div key={n.title} className="bg-gray-50 rounded-2xl border border-gray-100 p-6 hover:shadow-md transition-shadow">
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="text-xs font-bold uppercase tracking-wide text-white bg-green-700 px-2 py-0.5 rounded">
-                    {n.tag}
-                  </span>
-                  <span className="text-xs text-gray-400">{n.date}</span>
-                </div>
-                <h3 className="font-bold text-gray-900 mb-2">{n.title}</h3>
-                <p className="text-sm text-gray-500">{n.desc}</p>
+        </div>
+      </section>
+
+      {/* ── SOLUTION CYCLE ── */}
+      <section className="py-20 sm:py-28 bg-gray-50 border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <Eyebrow text="Our Solution" />
+          <div className="grid sm:grid-cols-2 gap-4 items-start mb-10">
+            <h2 className="text-3xl sm:text-4xl font-black text-gray-950 tracking-tight">
+              From farm to fork —<br />a complete system.
+            </h2>
+            <p className="text-base text-gray-500 leading-relaxed sm:pt-2">
+              SoyaThrive doesn't just sell food. We create a circular system that feeds children,
+              empowers farmers, and builds long-term food security across Ngororero District.
+            </p>
+          </div>
+          <div ref={cycleRef} className="grid sm:grid-cols-3 gap-px bg-gray-200">
+            {cycle.map((c, i) => (
+              <div
+                key={c.title}
+                className={`bg-white px-8 py-10 ${i <= cycleIdx ? "animate-fade-up" : "opacity-0"}`}
+                style={{ animationDelay: `${i * 120}ms` }}
+              >
+                <div className="text-[10px] font-black text-gray-300 tracking-[0.2em] mb-6">{c.num}</div>
+                <div className="w-8 h-0.5 bg-green-800 mb-5" />
+                <h3 className="font-black text-gray-900 text-base mb-3">{c.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{c.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-amber-50">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Heart className="w-8 h-8 text-amber-600" />
+      {/* ── SOCIAL PROOF ── */}
+      <section className="py-20 sm:py-28 bg-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="grid lg:grid-cols-[2fr_3fr] gap-16 items-start">
+            <div>
+              <Eyebrow text="Evidence Base" />
+              <h2 className="text-3xl sm:text-4xl font-black text-gray-950 tracking-tight mb-5">
+                Community-validated from day one.
+              </h2>
+              <p className="text-base text-gray-500 leading-relaxed mb-6">
+                Before building anything, we went into the community. Our February 2026 survey of 52
+                households across Ngororero District validated demand, pricing, and distribution channels.
+              </p>
+              <p className="text-base text-gray-500 leading-relaxed mb-8">
+                Every product, price point, and program is built on what families told us they need —
+                not what we assumed.
+              </p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400 mb-4">
+                Trusted by
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {["Community Health Workers", "ECD Centers", "Soy Farmers", "Health Centers"].map((t) => (
+                  <span key={t} className="text-xs font-medium text-gray-600 border border-gray-200 px-3 py-1.5">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Stats grid */}
+            <div ref={proofRef}>
+              <div className={`grid grid-cols-2 border-l border-t border-gray-200 ${proofIn ? "animate-fade-right" : "opacity-0"}`}>
+                {proof.map((p) => (
+                  <Counter key={p.label} end={p.value} suffix={p.suffix} label={p.label} />
+                ))}
+              </div>
+              <blockquote className="mt-8 border-l-2 border-green-800 pl-5">
+                <p className="text-base text-gray-700 leading-relaxed italic font-medium mb-3">
+                  "The community health worker showed me how easy it is to prepare. My children actually
+                  like the taste — that was the biggest surprise."
+                </p>
+                <cite className="text-xs text-gray-400 not-italic font-bold uppercase tracking-wider">
+                  Divine — Mother of 3, Ngororero District
+                </cite>
+              </blockquote>
+            </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
-            Join the Mission
-          </h2>
-          <p className="text-gray-500 mb-8 text-lg">
-            Whether you want to fund, partner, or simply learn more — SoyaThrive welcomes you.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/funding"
-              className="px-8 py-3.5 bg-green-700 hover:bg-green-800 text-white font-bold rounded-xl transition-all shadow-md"
-            >
-              Support SoyaThrive
-            </Link>
-            <Link
-              to="/contact"
-              className="px-8 py-3.5 border border-gray-200 hover:border-green-300 text-gray-700 hover:text-green-700 font-semibold rounded-xl transition-all"
-            >
-              Get in Touch
-            </Link>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2"
-            >
-              <MessageCircle className="w-4 h-4" /> Chat Now
-            </a>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section ref={ctaRef} className="py-20 sm:py-28 bg-gray-950">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <div className={`grid lg:grid-cols-[1fr_auto] gap-10 items-center ${ctaIn ? "animate-fade-up" : "opacity-0"}`}>
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-4">
+                Take Action
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+                Ready to make a difference<br />in Ngororero District?
+              </h2>
+              <p className="text-gray-400 text-base leading-relaxed max-w-lg">
+                Buy our products, partner with us as a school or health center, or support our mission
+                with a donation. Every action matters.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+              <Link
+                to="/products"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-amber-500 hover:bg-amber-400 text-white font-bold text-sm transition-colors"
+              >
+                Learn About Our Products <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/get-involved"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3 border border-white/20 hover:border-white/40 text-white font-semibold text-sm transition-colors"
+              >
+                Get Involved
+              </Link>
+            </div>
           </div>
         </div>
       </section>

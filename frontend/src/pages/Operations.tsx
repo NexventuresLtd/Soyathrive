@@ -1,5 +1,7 @@
-import { Tractor, Factory, Package, Store, Users, Check, MessageCircle, ChevronRight, ClipboardList, Handshake, UserCircle, Leaf } from "lucide-react";
+import { Tractor, Factory, Package, Store, Users, Check, MessageCircle, ChevronRight, ClipboardList, Handshake, Leaf } from "lucide-react";
 import PageHero from "../components/ui/PageHero";
+import { useInView } from "../hooks/useInView";
+import { useStaggeredInView } from "../hooks/useStaggeredInView";
 
 const WHATSAPP_URL =
   "https://wa.me/250780000000?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20discuss%20a%20partnership.";
@@ -42,7 +44,23 @@ const marketing = [
   { group: "Retailers", Icon: Store, channels: "Direct sales visits, market demonstrations, product sampling", message: "High-demand nutritious products that sell well and serve the community." },
 ];
 
+function Eyebrow({ text }: { text: string }) {
+  return (
+    <div className="flex items-center gap-3 mb-5">
+      <span className="block w-8 h-px bg-amber-500" />
+      <span className="text-xs font-bold uppercase tracking-[0.18em] text-amber-600">{text}</span>
+    </div>
+  );
+}
+
 export default function Operations() {
+  const { ref: permitRef, inView: permitIn } = useInView();
+  const { ref: processRef, activeIndex: processIdx } = useStaggeredInView(processSteps.length, 100);
+  const { ref: teamRef, activeIndex: teamIdx } = useStaggeredInView(team.length, 90);
+  const { ref: mgmtRef, inView: mgmtIn } = useInView();
+  const { ref: mktRef, inView: mktIn } = useInView();
+  const { ref: partnerRef, inView: partnerIn } = useInView();
+
   return (
     <>
       <PageHero
@@ -51,194 +69,285 @@ export default function Operations() {
         highlight="Marketing Plan"
         subtitle="A community-centered production and distribution model that connects local farmers, processors, and households in Ngororero District."
         color="green"
+        image="/images/operations-bg.jpg"
       />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+
         {/* Permits */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Permits &amp; Licenses Required</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <section
+          ref={permitRef}
+          className={`mb-20 transition-all duration-700 ${permitIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <Eyebrow text="Regulatory Compliance" />
+          <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-10">
+            Permits & Licenses
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
             {permits.map((p) => (
-              <div key={p.label} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-                <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center mb-3">
-                  <Check className="w-4 h-4 text-green-700" />
+              <div key={p.label} className="bg-white p-7 border-l-2 border-l-green-700 hover:border-l-amber-500 transition-colors">
+                <div className="w-8 h-8 bg-green-700 flex items-center justify-center mb-4">
+                  <Check className="w-4 h-4 text-white" />
                 </div>
-                <h3 className="font-bold text-gray-900 mb-1.5">{p.label}</h3>
-                <p className="text-sm text-gray-500">{p.desc}</p>
+                <h3 className="font-black text-gray-900 mb-2 text-sm">{p.label}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Equipment */}
-        <div className="bg-green-700 rounded-3xl p-8 sm:p-10 text-white mb-16">
-          <h2 className="text-2xl font-bold mb-6 text-amber-400">Equipment &amp; Physical Assets</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              "Soybean cleaning and sorting equipment",
-              "Roasting machine for soy snacks",
-              "Milling machine for soy flour production",
-              "Grinding and mixing equipment for porridge mix",
-              "Packaging and sealing machines",
-              "Storage facilities for raw materials and finished products",
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-3 bg-white/10 border border-white/15 rounded-xl p-4">
-                <Leaf className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
-                <span className="text-sm text-green-100">{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Production process */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Product Delivery Process</h2>
-          <div className="relative">
-            <div className="absolute left-8 top-8 bottom-8 w-0.5 bg-green-100 hidden md:block" />
-            <div className="space-y-5">
-              {processSteps.map((p) => (
-                <div key={p.step} className="flex gap-6 items-start">
-                  <div className="relative z-10 w-16 h-16 rounded-2xl bg-green-700 text-white flex flex-col items-center justify-center shrink-0 shadow-md">
-                    <p.Icon className="w-5 h-5" />
-                    <span className="text-xs font-bold opacity-60 mt-0.5">{p.step}</span>
+        <section className="mb-20 relative overflow-hidden">
+          <div
+            className="relative bg-green-900 hero-grain p-10 sm:p-14"
+            style={{ backgroundImage: "url(/images/equipment-bg.jpg)", backgroundSize: "cover", backgroundPosition: "center" }}
+          >
+            <div className="absolute inset-0 bg-green-900/85" />
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-4 -right-4 text-[10rem] font-black text-white/[0.03] leading-none select-none pointer-events-none uppercase tracking-tighter"
+            >
+              EQUIP
+            </div>
+            <div className="relative z-10">
+              <Eyebrow text="Physical Assets" />
+              <h2 className="text-3xl font-black text-white tracking-tight mb-8">
+                Equipment &<br />
+                <span className="text-amber-400">Processing Infrastructure</span>
+              </h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  "Soybean cleaning and sorting equipment",
+                  "Roasting machine for soy snacks",
+                  "Milling machine for soy flour production",
+                  "Grinding and mixing equipment for porridge mix",
+                  "Packaging and sealing machines",
+                  "Storage facilities for raw materials and finished products",
+                ].map((item, i) => (
+                  <div key={item} className="flex items-start gap-3 border border-white/10 p-4 bg-white/5">
+                    <span className="text-xs font-black text-amber-400 shrink-0 mt-0.5 [font-variant-numeric:tabular-nums]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-sm text-green-100 leading-relaxed">{item}</span>
                   </div>
-                  <div className="bg-white border border-gray-100 rounded-2xl p-5 flex-1 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 className="font-bold text-gray-900 mb-1">{p.title}</h3>
-                    <p className="text-sm text-gray-500">{p.desc}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Production Process */}
+        <section className="mb-20">
+          <Eyebrow text="How We Work" />
+          <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-10">
+            Product Delivery<br />
+            <span className="text-green-700">Process</span>
+          </h2>
+          <div ref={processRef} className="relative">
+            <div className="absolute left-8 top-0 bottom-0 w-px bg-gray-100 hidden md:block" />
+            <div className="space-y-4">
+              {processSteps.map((p, i) => (
+                <div
+                  key={p.step}
+                  className={`flex gap-6 items-start transition-all duration-500 ${
+                    i < processIdx ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
+                  }`}
+                  style={{ transitionDelay: `${i * 100}ms` }}
+                >
+                  <div className="relative z-10 w-16 h-16 bg-green-700 text-white flex flex-col items-center justify-center shrink-0">
+                    <p.Icon className="w-5 h-5" />
+                    <span className="text-[10px] font-black opacity-60 mt-0.5 [font-variant-numeric:tabular-nums]">
+                      {String(p.step).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="border-l-2 border-l-green-700 hover:border-l-amber-500 pl-6 py-4 flex-1 transition-colors">
+                    <h3 className="font-black text-gray-900 mb-1">{p.title}</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">{p.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Team */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Human Resources</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {team.map((t) => (
-              <div key={t.role} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:border-green-200 transition-colors">
-                <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-3">
-                  <t.Icon className="w-6 h-6 text-green-700" />
-                </div>
-                <h3 className="font-bold text-gray-900 mb-2">{t.role}</h3>
-                <p className="text-sm text-gray-500">{t.resp}</p>
+        <section className="mb-20">
+          <Eyebrow text="Human Resources" />
+          <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-10">
+            Our Team
+          </h2>
+          <div ref={teamRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
+            {team.map((t, i) => (
+              <div
+                key={t.role}
+                className={`bg-white p-7 border-l-2 border-l-green-700 hover:border-l-amber-500 transition-all duration-500 ${
+                  i < teamIdx ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+                }`}
+                style={{ transitionDelay: `${i * 90}ms` }}
+              >
+                <t.Icon className="w-5 h-5 text-green-700 mb-4" />
+                <h3 className="font-black text-gray-900 mb-2">{t.role}</h3>
+                <p className="text-xs text-gray-500 leading-relaxed">{t.resp}</p>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Management functions */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Key Management Functions</h2>
-          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
-            <div className="divide-y divide-gray-100">
-              {management.map((m, i) => (
-                <div key={m.fn} className="flex gap-5 p-5 hover:bg-gray-50 transition-colors">
-                  <div className="w-8 h-8 rounded-full bg-green-100 text-green-700 font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
-                    {i + 1}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">{m.fn}</h3>
-                    <p className="text-sm text-gray-500">{m.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Marketing */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Marketing Plan</h2>
-
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-green-50 border border-green-100 rounded-2xl p-6">
-              <h3 className="font-bold text-green-800 mb-2">Customer Awareness Strategy</h3>
-              <ul className="space-y-1.5 text-sm text-green-700">
-                {["Community Health Workers as trusted product advocates", "Cooking demonstrations and free sampling events", "Radio and community announcements in local areas", "Partnerships with health centers and ECD programs"].map((item) => (
-                  <li key={item} className="flex gap-2 items-start">
-                    <ChevronRight className="w-4 h-4 shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-amber-50 border border-amber-100 rounded-2xl p-6">
-              <h3 className="font-bold text-amber-800 mb-2">Pricing Strategy</h3>
-              <p className="text-sm text-amber-700 mb-3">Research confirmed optimal price: 800–1,200 RWF per kg for soy flour.</p>
-              <ul className="space-y-1.5 text-sm text-amber-700">
-                {["Priced within reach of low-income households (800–1,200 RWF/kg)", "Free samples distributed at health center visits", "Bulk discounts for institutional buyers (schools, ECDs)", "Mobile money payments accepted"].map((item) => (
-                  <li key={item} className="flex gap-2 items-start">
-                    <ChevronRight className="w-4 h-4 shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            {marketing.map((m) => (
-              <div key={m.group} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-3">
-                  <m.Icon className="w-6 h-6 text-green-700" />
-                </div>
-                <h3 className="font-bold text-gray-900 mb-3">{m.group}</h3>
-                <div className="mb-3">
-                  <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Channels</div>
-                  <p className="text-xs text-gray-600">{m.channels}</p>
+        {/* Management Functions */}
+        <section
+          ref={mgmtRef}
+          className={`mb-20 transition-all duration-700 ${mgmtIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <Eyebrow text="Leadership" />
+          <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-10">
+            Key Management<br />
+            <span className="text-green-700">Functions</span>
+          </h2>
+          <div className="border border-gray-200 divide-y divide-gray-100">
+            {management.map((m, i) => (
+              <div key={m.fn} className="flex gap-5 p-6 hover:bg-gray-50 transition-colors group">
+                <div className="w-10 h-10 bg-gray-100 group-hover:bg-green-700 text-gray-500 group-hover:text-white font-black text-sm flex items-center justify-center shrink-0 mt-0.5 transition-colors [font-variant-numeric:tabular-nums]">
+                  {String(i + 1).padStart(2, "0")}
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Key Message</div>
-                  <p className="text-xs text-gray-600">{m.message}</p>
+                  <h3 className="font-black text-gray-900 mb-1 text-sm">{m.fn}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{m.desc}</p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Partners */}
-        <div className="bg-gray-50 rounded-3xl p-8 mb-10">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">Suppliers &amp; Distribution Partners</h2>
-          <div className="grid sm:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Suppliers</h3>
-              <ul className="space-y-2">
-                {["Smallholder soybean farmers in Ngororero and surrounding districts", "Packaging materials and labeling suppliers", "Equipment vendors for agro-processing machinery"].map((s) => (
-                  <li key={s} className="flex gap-2 text-sm text-gray-600">
-                    <span className="text-green-600 font-bold">•</span>{s}
+        {/* Marketing Plan */}
+        <section
+          ref={mktRef}
+          className={`mb-20 transition-all duration-700 ${mktIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <Eyebrow text="Go-To-Market" />
+          <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-10">
+            Marketing Plan
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-px bg-gray-200 mb-6">
+            <div className="bg-white p-8 border-l-4 border-l-green-700">
+              <h3 className="font-black text-gray-900 mb-4 text-sm uppercase tracking-wider">Customer Awareness</h3>
+              <ul className="space-y-3">
+                {[
+                  "Community Health Workers as trusted product advocates",
+                  "Cooking demonstrations and free sampling events",
+                  "Radio and community announcements in local areas",
+                  "Partnerships with health centers and ECD programs",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 items-start text-sm text-gray-600">
+                    <ChevronRight className="w-4 h-4 shrink-0 mt-0.5 text-green-600" />
+                    {item}
                   </li>
                 ))}
               </ul>
             </div>
-            <div>
-              <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Distribution Partners</h3>
-              <ul className="space-y-2">
-                {["Community Health Workers — last-mile distribution and education", "ECD centers and primary schools — institutional bulk sales", "Local retail shops and markets — consumer access points", "Health centers — integrated product and nutrition outreach"].map((s) => (
-                  <li key={s} className="flex gap-2 text-sm text-gray-600">
-                    <span className="text-green-600 font-bold">•</span>{s}
+            <div className="bg-white p-8 border-l-4 border-l-amber-500">
+              <h3 className="font-black text-gray-900 mb-4 text-sm uppercase tracking-wider">Pricing Strategy</h3>
+              <p className="text-sm text-gray-500 mb-4 leading-relaxed">
+                Research confirmed optimal price: <strong>800–1,200 RWF per kg</strong> for soy flour.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Priced within reach of low-income households (800–1,200 RWF/kg)",
+                  "Free samples distributed at health center visits",
+                  "Bulk discounts for institutional buyers (schools, ECDs)",
+                  "Mobile money payments accepted",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 items-start text-sm text-gray-600">
+                    <ChevronRight className="w-4 h-4 shrink-0 mt-0.5 text-amber-500" />
+                    {item}
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-        </div>
+
+          <div className="grid md:grid-cols-3 gap-px bg-gray-200">
+            {marketing.map((m) => (
+              <div key={m.group} className="bg-white p-7 hover:bg-gray-50 transition-colors">
+                <m.Icon className="w-5 h-5 text-green-700 mb-4" />
+                <h3 className="font-black text-gray-900 mb-4">{m.group}</h3>
+                <div className="mb-3">
+                  <div className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-1.5">Channels</div>
+                  <p className="text-xs text-gray-600 leading-relaxed">{m.channels}</p>
+                </div>
+                <div>
+                  <div className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-1.5">Key Message</div>
+                  <p className="text-xs text-gray-600 leading-relaxed">{m.message}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Partners */}
+        <section
+          ref={partnerRef}
+          className={`mb-16 transition-all duration-700 ${partnerIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <Eyebrow text="Supply Chain" />
+          <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-8">
+            Suppliers & Partners
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-px bg-gray-200">
+            <div className="bg-white p-8">
+              <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.18em] mb-5">Suppliers</h3>
+              <ul className="space-y-3">
+                {[
+                  "Smallholder soybean farmers in Ngororero and surrounding districts",
+                  "Packaging materials and labeling suppliers",
+                  "Equipment vendors for agro-processing machinery",
+                ].map((s) => (
+                  <li key={s} className="flex gap-3 text-sm text-gray-600 items-start">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-600 shrink-0 mt-2" />{s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white p-8">
+              <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.18em] mb-5">Distribution Partners</h3>
+              <ul className="space-y-3">
+                {[
+                  "Community Health Workers — last-mile distribution and education",
+                  "ECD centers and primary schools — institutional bulk sales",
+                  "Local retail shops and markets — consumer access points",
+                  "Health centers — integrated product and nutrition outreach",
+                ].map((s) => (
+                  <li key={s} className="flex gap-3 text-sm text-gray-600 items-start">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-2" />{s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
 
         {/* WhatsApp CTA */}
-        <div className="bg-green-700 rounded-3xl p-8 text-center text-white">
-          <UserCircle className="w-10 h-10 text-amber-400 mx-auto mb-3" />
-          <h3 className="text-xl font-bold mb-2">Want to Partner or Supply With Us?</h3>
-          <p className="text-green-200 text-sm mb-5">Reach out directly via WhatsApp to discuss farmer partnerships, distribution agreements, or institutional supply.</p>
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3 bg-white text-green-700 hover:bg-green-50 font-bold rounded-xl transition-all"
-          >
-            <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
-          </a>
-        </div>
+        <section className="relative bg-green-900 hero-grain overflow-hidden p-10 sm:p-14 text-center"
+          style={{ backgroundImage: "url(/images/partner-cta-bg.jpg)", backgroundSize: "cover", backgroundPosition: "center" }}
+        >
+          <div className="absolute inset-0 bg-green-900/90" />
+          <div className="relative z-10">
+            <Leaf className="w-8 h-8 text-amber-400 mx-auto mb-4" />
+            <h3 className="text-2xl font-black text-white mb-3">Want to Partner or Supply With Us?</h3>
+            <p className="text-green-300 text-sm mb-7 max-w-md mx-auto leading-relaxed">
+              Reach out directly via WhatsApp to discuss farmer partnerships, distribution agreements, or institutional supply.
+            </p>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-green-800 hover:bg-amber-50 font-black transition-all text-sm"
+            >
+              <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+            </a>
+          </div>
+        </section>
+
       </div>
     </>
   );
