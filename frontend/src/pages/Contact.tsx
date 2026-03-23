@@ -18,7 +18,7 @@ const roles = [
 
 const faqs = [
   { q: "Where are SoyaThrive products available?", a: "SoyaThrive is currently in the pilot stage in Ngororero District, Rwanda. Products will be distributed through local retailers, health centers, ECD centers, and community cooperatives." },
-  { q: "How much do soy products cost?", a: "Fortified soy flour is targeted at 800–1,200 RWF per kilogram — a price confirmed as affordable and acceptable through community research. Other products are priced similarly." },
+  { q: "How much do soy products cost?", a: "Fortified soy flour is targeted at 800–1,200 RWF per kilogram  ,  a price confirmed as affordable and acceptable through community research. Other products are priced similarly." },
   { q: "How can farmers supply soybeans to SoyaThrive?", a: "We welcome local soybean farmers in Ngororero and surrounding districts. Contact us via WhatsApp to discuss supply agreements, pricing, and capacity building support." },
   { q: "Is SoyaThrive registered?", a: "SoyaThrive is in the process of registering with the Rwanda Development Board (RDB) and obtaining food safety certification from the Rwanda Standards Board (RSB)." },
   { q: "How does SoyaThrive ensure product quality?", a: "We implement standardized processing procedures, hygienic packaging, and quality control checks in compliance with Rwanda Standards Board requirements." },
@@ -79,7 +79,7 @@ export default function Contact() {
             </div>
             <div>
               <p className="font-black text-green-900">Prefer a quick chat?</p>
-              <p className="text-sm text-green-700">Message us directly on WhatsApp — we respond promptly.</p>
+              <p className="text-sm text-green-700">Message us directly on WhatsApp  ,  we respond promptly.</p>
             </div>
           </div>
           <a
@@ -150,7 +150,7 @@ export default function Contact() {
           <div className="lg:col-span-2 bg-white p-10">
             <Eyebrow text="Message" />
             <h2 className="text-2xl font-black text-gray-900 mb-8">
-              {selectedRole ? `Contact Us — ${selectedRoleLabel}` : "Send Us a Message"}
+              {selectedRole ? `Contact Us  ,  ${selectedRoleLabel}` : "Send Us a Message"}
             </h2>
 
             {submitted ? (
@@ -160,7 +160,7 @@ export default function Contact() {
                 </div>
                 <h3 className="text-xl font-black text-gray-900 mb-2">Message Sent!</h3>
                 <p className="text-gray-400 text-sm mb-8 leading-relaxed">
-                  Your message has been opened in WhatsApp. We respond promptly — usually within 24 hours.
+                  Your message has been opened in WhatsApp. We respond promptly  ,  usually within 24 hours.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <button
@@ -279,9 +279,9 @@ export default function Contact() {
               <h3 className="font-black text-amber-900 mb-4 text-sm uppercase tracking-wider">SDG Alignment</h3>
               <div className="space-y-2.5">
                 {[
-                  "SDG 2 — Zero Hunger",
-                  "SDG 3 — Good Health & Well-being",
-                  "SDG 8 — Decent Work & Economic Growth",
+                  "SDG 2  ,  Zero Hunger",
+                  "SDG 3  ,  Good Health & Well-being",
+                  "SDG 8  ,  Decent Work & Economic Growth",
                 ].map((s) => (
                   <div key={s} className="flex gap-2 items-center text-sm text-amber-800">
                     <Leaf className="w-3.5 h-3.5 shrink-0 text-amber-500" /> {s}

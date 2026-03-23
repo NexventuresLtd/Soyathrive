@@ -3,7 +3,7 @@ interface PageHeroProps {
   title: string;
   highlight?: string;
   subtitle: string;
-  // legacy props — accepted but unused
+  // legacy props  ,  accepted but unused
   color?: string;
   image?: string;
 }

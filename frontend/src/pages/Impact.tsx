@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import PageHero from "../components/ui/PageHero";
 import Eyebrow from "../components/ui/Eyebrow";
+import CTABand from "../components/ui/CTABand";
+import PhotoBlock from "../components/ui/PhotoBlock";
 import { useInView } from "../hooks/useInView";
 import { useStaggeredInView } from "../hooks/useStaggeredInView";
 import { useCountUp } from "../hooks/useCountUp";
@@ -10,16 +10,20 @@ const stories = [
   {
     initials: "DM",
     name: "Divine Mukamana",
-    role: "Mother of three, Ngororero District",
+    role: "Mother of three",
+    location: "Ngororero District",
+    photo: "/images/stories/divine.jpg",
     color: "bg-green-800",
     quote:
-      "Before SoyaThrive, I struggled to give my children enough protein. Now I use the soy porridge every morning. My youngest has grown so much stronger — and the price fits our budget.",
+      "Before SoyaThrive, I struggled to give my children enough protein. Now I use the soy porridge every morning. My youngest has grown so much stronger  ,  and the price fits our budget.",
     context: "Participating household · Baseline survey respondent",
   },
   {
     initials: "JP",
     name: "Jean Pierre Hakizimana",
-    role: "Soybean farmer, Ngororero District",
+    role: "Soybean farmer",
+    location: "Ngororero District",
+    photo: "/images/stories/farmer-jean-pierre.jpg",
     color: "bg-amber-700",
     quote:
       "I used to sell my soybeans at whatever price buyers offered. Now I have a contract. I know what I will earn before I even harvest. It has changed how I plan for my family.",
@@ -28,7 +32,9 @@ const stories = [
   {
     initials: "AC",
     name: "Alphonsine Cyuzuzo",
-    role: "Community Health Worker, Ngororero",
+    role: "Community Health Worker",
+    location: "Ngororero Sector",
+    photo: "/images/stories/chw-alphonsine.jpg",
     color: "bg-green-900",
     quote:
       "When I recommend SoyaThrive products, families trust me because the products actually work and the price is real. I've seen children improve in just a few months.",
@@ -51,7 +57,7 @@ const milestones = [
     quarter: "Q2 2026",
     title: "Launch",
     items: [
-      "First production batch — soy porridge + flour",
+      "First production batch  ,  soy porridge + flour",
       "3 CHW network partnerships activated",
       "2 ECD center supply agreements signed",
     ],
@@ -124,28 +130,35 @@ export default function Impact() {
               Behind every data point<br />is a family.
             </h2>
             <p className="text-base text-gray-500 leading-relaxed sm:pt-2">
-              We measure impact in numbers — but these are the stories that tell us why the numbers matter.
+              We measure impact in numbers  ,  but these are the stories that tell us why the numbers matter.
             </p>
           </div>
           <div ref={storiesRef} className="grid sm:grid-cols-3 gap-4">
             {stories.map((s, i) => (
               <div
                 key={s.name}
-                className={`border border-gray-200 bg-white p-7 flex flex-col ${i <= storyIdx ? "animate-scale-in" : "opacity-0"}`}
+                className={`border border-gray-200 bg-white overflow-hidden flex flex-col ${i <= storyIdx ? "animate-scale-in" : "opacity-0"}`}
                 style={{ animationDelay: `${i * 100}ms` }}
               >
-                <blockquote className="flex-1 mb-6">
-                  <p className="text-sm text-gray-600 leading-relaxed italic">"{s.quote}"</p>
-                </blockquote>
-                <div className="flex items-center gap-3 border-t border-gray-100 pt-5">
-                  <div className={`w-10 h-10 ${s.color} flex items-center justify-center text-white font-black text-xs shrink-0`}>
-                    {s.initials}
+                {/* Person photo */}
+                <PhotoBlock
+                  src={s.photo}
+                  alt={`${s.name}  ,  ${s.role}`}
+                  overlay="green"
+                  className="h-44 sm:h-52"
+                  position="object-top"
+                >
+                  <div className="absolute bottom-3 left-4 right-4">
+                    <p className="text-white font-black text-sm">{s.name}</p>
+                    <p className="text-white/70 text-xs">{s.role} · {s.location}</p>
                   </div>
-                  <div>
-                    <p className="font-bold text-gray-900 text-sm">{s.name}</p>
-                    <p className="text-xs text-gray-400">{s.role}</p>
-                    <p className="text-[10px] text-green-800 font-medium mt-0.5">{s.context}</p>
-                  </div>
+                </PhotoBlock>
+
+                <div className="p-6 flex-1 flex flex-col">
+                  <blockquote className="flex-1 mb-5">
+                    <p className="text-sm text-gray-600 leading-relaxed italic">"{s.quote}"</p>
+                  </blockquote>
+                  <p className="text-[10px] font-bold text-green-800 uppercase tracking-wider">{s.context}</p>
                 </div>
               </div>
             ))}
@@ -163,24 +176,27 @@ export default function Impact() {
             </h2>
             <p className="text-base text-gray-500 leading-relaxed sm:pt-2">
               Our February 2026 community survey provides the evidence base for every product, price,
-              and program decision. Here's what the data shows.
+              and program decision.
             </p>
           </div>
 
-          {/* Stat grid */}
-          <div ref={dataRef} className={`grid grid-cols-2 sm:grid-cols-4 border-l border-t border-gray-200 bg-white mb-14 ${dataIn ? "animate-fade-up" : "opacity-0"}`}>
+          {/* Stat counters */}
+          <div
+            ref={dataRef}
+            className={`grid grid-cols-2 sm:grid-cols-4 border-l border-t border-gray-200 bg-white mb-14 ${dataIn ? "animate-fade-up" : "opacity-0"}`}
+          >
             <ImpactStat end={52} suffix="" label="households in baseline survey" />
             <ImpactStat end={89} suffix="%" label="willing to buy at target price" />
             <ImpactStat end={92} suffix="%" label="interested in at least one product" />
             <ImpactStat end={87} suffix="%" label="trust CHW nutrition advice" />
           </div>
 
-          {/* Data table */}
+          {/* Product interest table */}
           <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400 mb-4">
             Community Interest by Product
           </p>
           <div className="border border-gray-200 bg-white overflow-hidden mb-14">
-            <div className="grid grid-cols-4 border-b border-gray-100 px-5 py-3">
+            <div className="grid grid-cols-4 border-b border-gray-100 px-5 py-3 bg-gray-50">
               <span className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400">Product</span>
               <span className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400">Interest Score</span>
               <span className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400 hidden sm:block">% Would Buy</span>
@@ -194,7 +210,7 @@ export default function Impact() {
             ].map((row, i) => (
               <div
                 key={row.product}
-                className={`grid grid-cols-4 px-5 py-4 text-sm ${i % 2 === 0 ? "bg-white" : "bg-gray-50"} border-t border-gray-100 first:border-t-0`}
+                className={`grid grid-cols-4 px-5 py-4 text-sm border-t border-gray-100 ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}
               >
                 <span className="font-medium text-gray-800">{row.product}</span>
                 <span className="font-black text-green-800">{row.score}</span>
@@ -206,18 +222,18 @@ export default function Impact() {
             ))}
           </div>
 
-          {/* Key findings */}
+          {/* Key findings grid */}
           <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400 mb-4">Key Survey Findings</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
             {[
               { stat: "80.8%", finding: "of families cite cost as the primary barrier to protein-rich food." },
               { stat: "65.4%", finding: "report limited availability as a key challenge in their area." },
-              { stat: "0 RWF", finding: "extra would be needed if products were available at local markets." },
-              { stat: "4.48/5", finding: "average interest in soy porridge mix — the highest-rated product." },
+              { stat: "92%", finding: "of all 52 surveyed households want at least one SoyaThrive product." },
+              { stat: "4.48/5", finding: "average interest in soy porridge mix  ,  the highest-rated product." },
               { stat: "CHWs", finding: "trusted by 87% of households as the top source of nutrition advice." },
-              { stat: "All 52", finding: "households surveyed expressed interest in at least one SoyaThrive product." },
+              { stat: "2026", finding: "SoyaThrive launches its first production batch in Q2 of this year." },
             ].map((f) => (
-              <div key={f.stat} className="bg-white px-6 py-6">
+              <div key={f.stat} className="bg-white px-6 py-6 hover:bg-green-50/30 transition-colors">
                 <div className="text-2xl font-black text-green-800 mb-2">{f.stat}</div>
                 <p className="text-sm text-gray-500 leading-relaxed">{f.finding}</p>
               </div>
@@ -235,36 +251,32 @@ export default function Impact() {
               A plan with<br />a clear roadmap.
             </h2>
             <p className="text-base text-gray-500 leading-relaxed sm:pt-2">
-              SoyaThrive has defined, measurable milestones for each phase of growth — from launch
-              through district-wide scale.
+              Defined, measurable milestones for each phase of growth  ,  from launch through district-wide scale.
             </p>
           </div>
-          <div ref={milestoneRef} className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-[11px] sm:left-[15px] top-0 bottom-0 w-px bg-gray-200 hidden sm:block" />
-            <div className="space-y-6">
+          <div ref={milestoneRef} className="relative pl-0 sm:pl-10">
+            <div className="absolute left-3 top-0 bottom-0 w-px bg-gray-200 hidden sm:block" />
+            <div className="space-y-4">
               {milestones.map((m, i) => (
                 <div
                   key={m.quarter}
-                  className={`flex gap-6 sm:gap-8 ${i <= milestoneIdx ? "animate-fade-left" : "opacity-0"}`}
+                  className={`flex gap-0 sm:gap-6 ${i <= milestoneIdx ? "animate-fade-left" : "opacity-0"}`}
                   style={{ animationDelay: `${i * 80}ms` }}
                 >
-                  {/* Dot */}
-                  <div className="hidden sm:flex flex-col items-center shrink-0 mt-1">
-                    <div className={`w-6 h-6 border-2 flex items-center justify-center shrink-0 ${
+                  {/* Timeline dot */}
+                  <div className="hidden sm:flex flex-col items-center shrink-0 -ml-10 mt-5">
+                    <div className={`w-5 h-5 border-2 flex items-center justify-center ${
                       m.status === "done" ? "bg-green-800 border-green-800" :
                       m.status === "current" ? "bg-amber-500 border-amber-500" :
                       "bg-white border-gray-300"
                     }`}>
-                      {m.status === "done" && (
-                        <div className="w-2 h-2 bg-white" />
-                      )}
+                      {m.status === "done" && <div className="w-1.5 h-1.5 bg-white" />}
                     </div>
                   </div>
-                  {/* Content */}
-                  <div className={`flex-1 border border-gray-200 p-6 ${
+                  {/* Card */}
+                  <div className={`flex-1 border p-6 ${
                     m.status === "current" ? "border-amber-300 bg-amber-50/40" :
-                    m.status === "done" ? "bg-white" : "bg-gray-50"
+                    m.status === "done" ? "border-gray-200 bg-white" : "border-gray-200 bg-gray-50"
                   }`}>
                     <div className="flex items-center gap-3 mb-3">
                       <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">{m.quarter}</span>
@@ -296,34 +308,15 @@ export default function Impact() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="py-16 sm:py-20 bg-gray-950">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-3">Be Part of the Story</p>
-            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mb-2">
-              Help us reach 1,000 families by end of 2026.
-            </h2>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-md">
-              Partner with us, buy our products, or support our mission with a donation.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3 shrink-0">
-            <Link
-              to="/get-involved"
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-amber-500 hover:bg-amber-400 text-white font-bold text-sm transition-colors"
-            >
-              Get Involved <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/partners"
-              className="inline-flex items-center gap-2 px-6 py-2.5 border border-white/20 hover:border-white/40 text-white font-semibold text-sm transition-colors"
-            >
-              Partner with Us
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CTABand
+        eyebrow="Be Part of the Story"
+        headline="Help us reach 1,000 families by end of 2026."
+        body="Partner with us, buy our products, or support our mission with a donation."
+        primaryLabel="Get Involved"
+        primaryTo="/get-involved"
+        secondaryLabel="Partner with Us"
+        secondaryTo="/partners"
+      />
     </>
   );
 }

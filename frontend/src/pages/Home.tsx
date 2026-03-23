@@ -4,6 +4,9 @@ import { useInView } from "../hooks/useInView";
 import { useStaggeredInView } from "../hooks/useStaggeredInView";
 import { useCountUp } from "../hooks/useCountUp";
 import Eyebrow from "../components/ui/Eyebrow";
+import BarChart from "../components/ui/BarChart";
+import CTABand from "../components/ui/CTABand";
+import PhotoBlock from "../components/ui/PhotoBlock";
 
 const WHATSAPP_URL =
   "https://wa.me/250780000000?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.";
@@ -17,7 +20,7 @@ const barriers = [
 ];
 
 const cycle = [
-  { num: "01", title: "Local Soybeans", desc: "Sourced from smallholder farmers in Ngororero District — guaranteed market, fair income." },
+  { num: "01", title: "Local Soybeans", desc: "Sourced from smallholder farmers in Ngororero District  ,  guaranteed market, fair income." },
   { num: "02", title: "Fortified Foods", desc: "Processed into affordable flour, porridge, soy milk, and snacks for every household." },
   { num: "03", title: "Healthy Children", desc: "Children grow stronger. Farmers earn more. Communities build lasting food security." },
 ];
@@ -26,7 +29,7 @@ const proof = [
   { value: 52, suffix: "", label: "Households in baseline survey" },
   { value: 89, suffix: "%", label: "Willing to buy at our price" },
   { value: 87, suffix: "%", label: "Trust CHW nutrition advice" },
-  { value: 4.48, suffix: "/5", label: "Interest score — soy porridge" },
+  { value: 4, suffix: ".48/5", label: "Interest score  ,  soy porridge" },
 ];
 
 function Counter({ end, suffix, label }: { end: number; suffix: string; label: string }) {
@@ -42,10 +45,8 @@ function Counter({ end, suffix, label }: { end: number; suffix: string; label: s
 }
 
 export default function Home() {
-  const { ref: barrierRef, inView: barrierIn } = useInView<HTMLDivElement>();
   const { ref: cycleRef, activeIndex: cycleIdx } = useStaggeredInView<HTMLDivElement>(3, 120);
   const { ref: proofRef, inView: proofIn } = useInView<HTMLDivElement>();
-  const { ref: ctaRef, inView: ctaIn } = useInView<HTMLDivElement>();
 
   return (
     <>
@@ -53,9 +54,9 @@ export default function Home() {
       <section className="bg-white border-b border-gray-100 overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-0.5 bg-green-800" />
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="grid lg:grid-cols-[1fr_320px] gap-12 items-center py-20 sm:py-28">
+          <div className="grid lg:grid-cols-[1fr_420px] gap-0 min-h-[540px] sm:min-h-[600px]">
             {/* Left */}
-            <div>
+            <div className="flex flex-col justify-center py-16 sm:py-24 pr-0 lg:pr-12">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-green-800 mb-6 animate-fade-in">
                 Ngororero District, Rwanda
               </p>
@@ -65,8 +66,8 @@ export default function Home() {
                 at a Time.
               </h1>
               <p className="text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl mb-10 animate-fade-up delay-200">
-                Affordable, locally produced soy foods — paired with education — to help every child
-                under five in Ngororero District thrive.
+                Affordable, locally produced soy foods  ,  paired with community education  ,  to help every
+                child under five in Ngororero District thrive.
               </p>
               <div className="flex flex-wrap items-center gap-3 animate-fade-up delay-300">
                 <Link
@@ -92,26 +93,27 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right — stat block */}
-            <div className="hidden lg:block border border-gray-200 bg-gray-50">
-              <div className="px-6 py-5 border-b border-gray-200">
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
-                  Community Survey · Feb 2026 · 52 Households
-                </p>
-              </div>
-              <div className="divide-y divide-gray-100">
-                {[
-                  { num: "80.8%", label: "of families cite cost as barrier to protein-rich food" },
-                  { num: "89%", label: "willing to buy soy products at our target price" },
-                  { num: "4.48/5", label: "community interest score for soy porridge mix" },
-                  { num: "87%", label: "trust CHW recommendations for nutrition" },
-                ].map((s) => (
-                  <div key={s.label} className="px-6 py-4">
-                    <div className="text-xl font-black text-green-800 mb-0.5">{s.num}</div>
-                    <p className="text-xs text-gray-500 leading-snug">{s.label}</p>
-                  </div>
-                ))}
-              </div>
+            {/* Right  ,  hero image */}
+            <div className="hidden lg:block -mr-0">
+              <PhotoBlock
+                src="/images/hero-mother-child.jpg"
+                alt="Mother feeding a healthy child in Rwanda"
+                overlay="green"
+                className="h-full min-h-[540px]"
+              >
+                {/* Floating stats on image */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 space-y-3">
+                  {[
+                    { num: "80.8%", label: "of families struggle to afford protein-rich food" },
+                    { num: "4.48/5", label: "community interest in soy porridge mix" },
+                  ].map((s) => (
+                    <div key={s.num} className="flex items-center gap-4 bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-3">
+                      <span className="text-xl font-black text-amber-400 shrink-0">{s.num}</span>
+                      <span className="text-xs text-white/80 leading-snug">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </PhotoBlock>
             </div>
           </div>
         </div>
@@ -121,7 +123,6 @@ export default function Home() {
       <section className="py-20 sm:py-28 bg-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Pull stat */}
             <div>
               <Eyebrow text="The Problem" />
               <h2 className="text-3xl sm:text-4xl font-black text-gray-950 tracking-tight mb-6">
@@ -129,7 +130,7 @@ export default function Home() {
               </h2>
               <p className="text-base text-gray-500 leading-relaxed mb-6">
                 In Ngororero District, <strong className="text-gray-800 font-semibold">80.8% of families</strong> struggle
-                to afford protein-rich foods — not because nutritious food doesn't exist, but because it
+                to afford protein-rich foods  ,  not because nutritious food doesn't exist, but because it
                 isn't produced locally, priced affordably, or distributed where families need it most.
               </p>
               <p className="text-base text-gray-500 leading-relaxed mb-8">
@@ -144,35 +145,14 @@ export default function Home() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
-
-            {/* Barrier chart */}
-            <div ref={barrierRef}>
+            <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400 mb-6">
                 Why families don't eat more protein foods
               </p>
-              <div className="space-y-5">
-                {barriers.map((b) => (
-                  <div key={b.label}>
-                    <div className="flex justify-between items-baseline mb-2">
-                      <span className="text-sm font-medium text-gray-700">{b.label}</span>
-                      <span className="text-sm font-black text-green-800 [font-variant-numeric:tabular-nums]">
-                        {b.pct}%
-                      </span>
-                    </div>
-                    <div className="h-1.5 bg-gray-100 overflow-hidden">
-                      {barrierIn && (
-                        <div
-                          className="h-full bg-green-800 animate-bar-fill"
-                          style={{ "--target-width": `${b.pct}%` } as React.CSSProperties}
-                        />
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <p className="text-[11px] text-gray-400 mt-4">
-                Source: SoyaThrive community survey, Feb 2026 (n=52)
-              </p>
+              <BarChart
+                data={barriers}
+                source="Source: SoyaThrive community survey, Feb 2026 (n=52)"
+              />
             </div>
           </div>
         </div>
@@ -182,9 +162,9 @@ export default function Home() {
       <section className="py-20 sm:py-28 bg-gray-50 border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
           <Eyebrow text="Our Solution" />
-          <div className="grid sm:grid-cols-2 gap-4 items-start mb-10">
+          <div className="grid sm:grid-cols-2 gap-4 items-start mb-12">
             <h2 className="text-3xl sm:text-4xl font-black text-gray-950 tracking-tight">
-              From farm to fork —<br />a complete system.
+              From farm to fork  , <br />a complete system.
             </h2>
             <p className="text-base text-gray-500 leading-relaxed sm:pt-2">
               SoyaThrive doesn't just sell food. We create a circular system that feeds children,
@@ -219,16 +199,16 @@ export default function Home() {
               </h2>
               <p className="text-base text-gray-500 leading-relaxed mb-6">
                 Before building anything, we went into the community. Our February 2026 survey of 52
-                households across Ngororero District validated demand, pricing, and distribution channels.
+                households validated demand, pricing, and distribution channels.
               </p>
               <p className="text-base text-gray-500 leading-relaxed mb-8">
-                Every product, price point, and program is built on what families told us they need —
-                not what we assumed.
+                Every product, price point, and program is built on what families told us  ,  not what
+                we assumed.
               </p>
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400 mb-4">
                 Trusted by
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 {["Community Health Workers", "ECD Centers", "Soy Farmers", "Health Centers"].map((t) => (
                   <span key={t} className="text-xs font-medium text-gray-600 border border-gray-200 px-3 py-1.5">
                     {t}
@@ -237,7 +217,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Stats grid */}
             <div ref={proofRef}>
               <div className={`grid grid-cols-2 border-l border-t border-gray-200 ${proofIn ? "animate-fade-right" : "opacity-0"}`}>
                 {proof.map((p) => (
@@ -247,10 +226,10 @@ export default function Home() {
               <blockquote className="mt-8 border-l-2 border-green-800 pl-5">
                 <p className="text-base text-gray-700 leading-relaxed italic font-medium mb-3">
                   "The community health worker showed me how easy it is to prepare. My children actually
-                  like the taste — that was the biggest surprise."
+                  like the taste  ,  that was the biggest surprise."
                 </p>
                 <cite className="text-xs text-gray-400 not-italic font-bold uppercase tracking-wider">
-                  Divine — Mother of 3, Ngororero District
+                  Divine  ,  Mother of 3, Ngororero District
                 </cite>
               </blockquote>
             </div>
@@ -258,39 +237,23 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── PHOTO STRIP ── */}
+      <div className="grid grid-cols-3 h-40 sm:h-56">
+        <PhotoBlock src="/images/community-health.jpg" alt="Community health worker session" overlay="green" />
+        <PhotoBlock src="/images/soy-products.jpg" alt="SoyaThrive product range" overlay="dark" />
+        <PhotoBlock src="/images/farmers-field.jpg" alt="Soybean farmers in Ngororero" overlay="green" />
+      </div>
+
       {/* ── CTA ── */}
-      <section ref={ctaRef} className="py-20 sm:py-28 bg-gray-950">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className={`grid lg:grid-cols-[1fr_auto] gap-10 items-center ${ctaIn ? "animate-fade-up" : "opacity-0"}`}>
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-4">
-                Take Action
-              </p>
-              <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
-                Ready to make a difference<br />in Ngororero District?
-              </h2>
-              <p className="text-gray-400 text-base leading-relaxed max-w-lg">
-                Buy our products, partner with us as a school or health center, or support our mission
-                with a donation. Every action matters.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
-              <Link
-                to="/products"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-amber-500 hover:bg-amber-400 text-white font-bold text-sm transition-colors"
-              >
-                Learn About Our Products <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                to="/get-involved"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3 border border-white/20 hover:border-white/40 text-white font-semibold text-sm transition-colors"
-              >
-                Get Involved
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CTABand
+        eyebrow="Take Action"
+        headline="Ready to make a difference in Ngororero District?"
+        body="Buy our products, partner with us as a school or health center, or support our mission with a donation."
+        primaryLabel="Learn About Our Products"
+        primaryTo="/products"
+        secondaryLabel="Get Involved"
+        secondaryTo="/get-involved"
+      />
     </>
   );
 }

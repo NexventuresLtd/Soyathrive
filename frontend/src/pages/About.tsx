@@ -26,7 +26,7 @@ const objectives = [
 
 const values = [
   { Icon: Leaf, title: "Affordability", desc: "Every product priced to be accessible to low-income households in rural Rwanda.", color: "text-green-700" },
-  { Icon: Shield, title: "Quality & Safety", desc: "All products meet RSB national food safety standards — standardized processing, hygienic packaging.", color: "text-amber-600" },
+  { Icon: Shield, title: "Quality & Safety", desc: "All products meet RSB national food safety standards  ,  standardized processing, hygienic packaging.", color: "text-amber-600" },
   { Icon: BarChart2, title: "Measurable Impact", desc: "We track nutrition outcomes, repeat purchases, and farmer income improvements.", color: "text-green-700" },
   { Icon: Users, title: "Community-Driven", desc: "Products co-created with mothers, CHWs, and farmers to ensure cultural relevance.", color: "text-amber-600" },
   { Icon: Handshake, title: "Farmer Partnership", desc: "Contractual relationships with smallholder farmers ensure sustainable supply and fair income.", color: "text-green-700" },
@@ -75,11 +75,11 @@ export default function About() {
               <p className="text-gray-500 leading-relaxed mb-4">
                 This was reinforced during an internship at the Rwanda Biomedical Center (RBC),
                 working in Public Health under the Maternal, Child, and Community Health (MCCH)
-                program — providing deep insight into the widespread challenges of child malnutrition.
+                program  ,  providing deep insight into the widespread challenges of child malnutrition.
               </p>
               <p className="text-gray-500 leading-relaxed">
                 These experiences motivated the creation of SoyaThrive as a practical and scalable
-                response — combining local soy processing, farmer capacity building, and community
+                response  ,  combining local soy processing, farmer capacity building, and community
                 nutrition education.
               </p>
             </div>
@@ -160,7 +160,7 @@ export default function About() {
           <div className="grid sm:grid-cols-3 gap-px bg-gray-200">
             {[
               { label: "120", sub: "Households surveyed", desc: "Comprehensive field research completed in Ngororero District, February 2026." },
-              { label: "95,000", sub: "Total households", desc: "Estimated households in Ngororero District — our primary starting market." },
+              { label: "95,000", sub: "Total households", desc: "Estimated households in Ngororero District  ,  our primary starting market." },
               { label: "150–200", sub: "Schools & ECD centers", desc: "Targeted for institutional bulk supply, serving over 20,000 children annually." },
             ].map((s, i) => (
               <div

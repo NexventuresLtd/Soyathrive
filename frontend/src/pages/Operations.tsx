@@ -11,7 +11,7 @@ const processSteps = [
   { step: 2, title: "Processing & Production", desc: "Soybeans are cleaned, roasted, milled, and processed into soy flour, porridge mix, roasted snacks, and soy milk using community-level equipment.", Icon: Factory },
   { step: 3, title: "Quality Control & Packaging", desc: "Processed products are quality-checked and packaged with clear labeling, nutritional information, storage instructions, and RSB compliance markings.", Icon: Package },
   { step: 4, title: "Distribution", desc: "Products are transported to local markets, small retail shops, health centers, and Early Childhood Development (ECD) centers via CHW and cooperative networks.", Icon: Store },
-  { step: 5, title: "Nutrition Education", desc: "Community Health Workers deliver nutrition education alongside product distribution — showing households how to incorporate soy foods into daily meals.", Icon: Users },
+  { step: 5, title: "Nutrition Education", desc: "Community Health Workers deliver nutrition education alongside product distribution  ,  showing households how to incorporate soy foods into daily meals.", Icon: Users },
   { step: 6, title: "Farmer Capacity Building", desc: "Ongoing training for soy farmers on improved cultivation practices, post-harvest handling, and quality standards to ensure consistent supply.", Icon: ClipboardList },
 ];
 
@@ -312,10 +312,10 @@ export default function Operations() {
               <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.18em] mb-5">Distribution Partners</h3>
               <ul className="space-y-3">
                 {[
-                  "Community Health Workers — last-mile distribution and education",
-                  "ECD centers and primary schools — institutional bulk sales",
-                  "Local retail shops and markets — consumer access points",
-                  "Health centers — integrated product and nutrition outreach",
+                  "Community Health Workers  ,  last-mile distribution and education",
+                  "ECD centers and primary schools  ,  institutional bulk sales",
+                  "Local retail shops and markets  ,  consumer access points",
+                  "Health centers  ,  integrated product and nutrition outreach",
                 ].map((s) => (
                   <li key={s} className="flex gap-3 text-sm text-gray-600 items-start">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-2" />{s}

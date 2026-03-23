@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MessageCircle, MapPin, Heart } from "lucide-react";
+import { MessageCircle, MapPin } from "lucide-react";
 
 const WHATSAPP_URL = `https://wa.me/250780000000?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.`;
 
@@ -105,7 +105,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <p className="text-xs text-gray-700 flex items-center gap-1.5">
-              Made with <Heart className="w-3 h-3 text-red-700/50" /> for Rwanda's children
+              Made by Nexventures Ltd
             </p>
             <a
               href={WHATSAPP_URL}

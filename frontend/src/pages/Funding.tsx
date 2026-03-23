@@ -55,10 +55,10 @@ const howToSupport = [
     href: WHATSAPP_FUND,
     modalTitle: "How to Donate",
     modalContent: [
-      "Reach out to us via WhatsApp — we'll guide you through the steps.",
+      "Reach out to us via WhatsApp  ,  we'll guide you through the steps.",
       "Donations can be made via mobile money (MTN or Airtel Rwanda).",
       "We issue impact reports to donors who contribute regularly.",
-      "All funds go directly into program delivery — no administrative overhead surprises.",
+      "All funds go directly into program delivery  ,  no administrative overhead surprises.",
     ],
   },
   {
@@ -130,7 +130,7 @@ export default function Funding() {
         badge="Support Us"
         title="Fund the"
         highlight="Mission"
-        subtitle="Every contribution — big or small — helps us nourish children, empower farmers, and build sustainable food systems in Ngororero District."
+        subtitle="Every contribution  ,  big or small  ,  helps us nourish children, empower farmers, and build sustainable food systems in Ngororero District."
         color="green"
         image="/images/funding-bg.jpg"
       />

@@ -9,7 +9,7 @@ const swot = {
     label: "text-green-700",
     items: [
       "Locally produced soy-based foods that are affordable and nutritious",
-      "High community interest in soy products — 92% rated interest 4–5 out of 5",
+      "High community interest in soy products  ,  92% rated interest 4–5 out of 5",
       "Integration of nutrition education with food production",
       "Partnerships with farmers, Community Health Workers, and health centers",
       "Products co-created with community ensuring cultural relevance",
@@ -71,7 +71,7 @@ const competitors = [
     name: "Cerelac (Imported Brand)",
     services: "Infant cereals, fortified weaning food",
     strength: "High quality, internationally trusted brand",
-    weakness: "Expensive — unaffordable for low-income families",
+    weakness: "Expensive  ,  unaffordable for low-income families",
     segment: "Urban / Middle-income",
     level: "Low",
   },
@@ -126,7 +126,7 @@ const segmentIcons = [Users, Users, Building2, ShoppingBag];
 const segments = [
   {
     title: "Households with Children Under Five",
-    desc: "Primary segment — rural families in Ngororero whose young children need protein-rich nutrition to prevent stunting. Estimated 57,000 low-income households targeted.",
+    desc: "Primary segment  ,  rural families in Ngororero whose young children need protein-rich nutrition to prevent stunting. Estimated 57,000 low-income households targeted.",
     tag: "Primary",
   },
   {
@@ -136,12 +136,12 @@ const segments = [
   },
   {
     title: "Schools & ECD Centers",
-    desc: "150–200 institutions in Ngororero providing meals to over 20,000 children annually — key institutional channel for bulk supply of fortified soy products.",
+    desc: "150–200 institutions in Ngororero providing meals to over 20,000 children annually  ,  key institutional channel for bulk supply of fortified soy products.",
     tag: "Institutional",
   },
   {
     title: "Local Retailers & Small Shops",
-    desc: "Distribution partners who supply food products to households in rural communities — key channel for last-mile product delivery.",
+    desc: "Distribution partners who supply food products to households in rural communities  ,  key channel for last-mile product delivery.",
     tag: "Distribution",
   },
 ];
@@ -175,7 +175,7 @@ export default function Market() {
         badge="Market Analysis"
         title="Industry &"
         highlight="Market"
-        subtitle="Understanding the soy nutrition landscape in Rwanda — market opportunity, competition, and strategic positioning for SoyaThrive."
+        subtitle="Understanding the soy nutrition landscape in Rwanda  ,  market opportunity, competition, and strategic positioning for SoyaThrive."
         color="green"
         image="/images/market-bg.jpg"
       />
@@ -195,7 +195,7 @@ export default function Market() {
                 <span className="text-green-700">for Soy Nutrition</span>
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                SoyaThrive operates in Rwanda's agriculture and agro-processing sector — transforming
+                SoyaThrive operates in Rwanda's agriculture and agro-processing sector  ,  transforming
                 locally grown soybeans into affordable, high-protein food products. Rwanda's government
                 recently introduced new high-yield soybean varieties projected to increase soybean
                 production by <span className="font-bold text-green-700">46%</span>, creating a favourable
@@ -204,7 +204,7 @@ export default function Market() {
               <p className="text-gray-500 leading-relaxed text-sm">
                 Despite 86% of surveyed households in Ngororero reporting awareness of soy foods,
                 structured and packaged soy products are not widely available in rural communities.
-                This gap — combined with high protein deficiency rates and strong consumer interest —
+                This gap  ,  combined with high protein deficiency rates and strong consumer interest  , 
                 presents a clear market opportunity for SoyaThrive.
               </p>
             </div>
