@@ -40,7 +40,7 @@ const team = [
     name: "Jean Paul Bukuru",
     role: "Founder & CEO",
     location: "Ngororero District, Rwanda",
-    photo: "/public/Jayp_profile.jpeg",
+    photo: "/Jayp_profile.jpeg",
     bio: "Entrepreneur and public health advocate with hands-on experience at Rwanda Biomedical Center's Maternal, Child, and Community Health program. Founded SoyaThrive to bridge the gap between local soybean production and affordable child nutrition.",
     color: "bg-green-800",
   },
@@ -49,7 +49,7 @@ const team = [
     name: "Dr. Chioma Joy Okonkwo",
     role: "Strategic Advisor",
     location: "Nutrition & Enterprise Strategy",
-    photo: "/public/Jayp_profile.jpeg",
+    photo: "/Jayp_profile.jpeg",
     bio: "Providing strategic guidance on enterprise development, nutrition programming, and sustainable food systems. Advises SoyaThrive on program design and impact measurement frameworks.",
     color: "bg-amber-700",
   },
@@ -222,7 +222,7 @@ export default function Story() {
             {/* Founder photo + survey stats */}
             <div className="space-y-4">
               <PhotoBlock
-                src="/public/Jayp_profile.jpeg"
+                src="/Jayp_profile.jpeg"
                 alt="Jean Paul Bukuru, Founder of SoyaThrive Initiative"
                 overlay="none"
                 className="h-64 sm:h-72 border border-gray-200"
