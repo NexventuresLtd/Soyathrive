@@ -9,7 +9,7 @@ import { useInView } from "../hooks/useInView";
 import { useStaggeredInView } from "../hooks/useStaggeredInView";
 
 const WHATSAPP_URL =
-  "https://wa.me/250780000000?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.";
+  "https://wa.me/250787144794?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.";
 
 const barriers = [
   { label: "Cost / Price", pct: 80.8 },
@@ -40,7 +40,7 @@ const team = [
     name: "Jean Paul Bukuru",
     role: "Founder & CEO",
     location: "Ngororero District, Rwanda",
-    photo: "/images/founder-jean-paul.jpg",
+    photo: "../public/Jayp_profile.jpeg",
     bio: "Entrepreneur and public health advocate with hands-on experience at Rwanda Biomedical Center's Maternal, Child, and Community Health program. Founded SoyaThrive to bridge the gap between local soybean production and affordable child nutrition.",
     color: "bg-green-800",
   },
@@ -49,7 +49,7 @@ const team = [
     name: "Dr. Chioma Joy Okonkwo",
     role: "Strategic Advisor",
     location: "Nutrition & Enterprise Strategy",
-    photo: "/images/advisor-chioma.jpg",
+    photo: "../public/Jayp_profile.jpeg",
     bio: "Providing strategic guidance on enterprise development, nutrition programming, and sustainable food systems. Advises SoyaThrive on program design and impact measurement frameworks.",
     color: "bg-amber-700",
   },
@@ -116,7 +116,7 @@ export default function Story() {
             <div>
               {/* Community photo + chart */}
               <PhotoBlock
-                src="/images/community-survey.jpg"
+                src="https://www.migeprof.gov.rw/fileadmin/_processed_/9/d/csm_A_young_boy_drinks_milk_at_an_early_childhood_development_centre_in_Rwanda__provided_daily_to_every_child_to_help_prevent_malnutrition_7d70517c10.jpg"
                 alt="Community health survey in Ngororero District"
                 overlay="green"
                 className="h-44 sm:h-52 mb-6"
@@ -222,7 +222,7 @@ export default function Story() {
             {/* Founder photo + survey stats */}
             <div className="space-y-4">
               <PhotoBlock
-                src="/images/founder-jean-paul.jpg"
+                src="../public/Jayp_profile.jpeg"
                 alt="Jean Paul Bukuru, Founder of SoyaThrive Initiative"
                 overlay="none"
                 className="h-64 sm:h-72 border border-gray-200"

@@ -5,7 +5,7 @@ import { useInView } from "../hooks/useInView";
 import { useStaggeredInView } from "../hooks/useStaggeredInView";
 
 const WHATSAPP_URL =
-  "https://wa.me/250780000000?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.";
+  "https://wa.me/250787144794?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.";
 
 function Eyebrow({ text, amber }: { text: string; amber?: boolean }) {
   return (

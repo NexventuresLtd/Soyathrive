@@ -4,7 +4,7 @@ import { useInView } from "../hooks/useInView";
 import { useStaggeredInView } from "../hooks/useStaggeredInView";
 
 const WHATSAPP_URL =
-  "https://wa.me/250780000000?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20discuss%20a%20partnership.";
+  "https://wa.me/250787144794?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20discuss%20a%20partnership.";
 
 const processSteps = [
   { step: 1, title: "Raw Material Sourcing", desc: "Soybeans are purchased from local smallholder farmers and cooperatives in Ngororero and surrounding districts through formal supply agreements.", Icon: Tractor },

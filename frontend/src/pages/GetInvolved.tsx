@@ -30,7 +30,7 @@ function ContactForm() {
     const text = encodeURIComponent(
       `Hello SoyaThrive Initiative,\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`
     );
-    window.open(`https://wa.me/250780000000?text=${text}`, "_blank");
+    window.open(`https://wa.me/250787144794?text=${text}`, "_blank");
   };
 
   return (
@@ -148,7 +148,7 @@ export default function GetInvolved() {
                 ))}
               </div>
               <a
-                href="https://wa.me/250780000000?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20order%20your%20products."
+                href="https://wa.me/250787144794?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20order%20your%20products."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-2.5 bg-green-800 hover:bg-green-900 text-white font-bold text-sm transition-colors"
@@ -246,7 +246,7 @@ export default function GetInvolved() {
                   Not ready for a form? Send us a quick WhatsApp and we'll guide you from there.
                 </p>
                 <a
-                  href="https://wa.me/250780000000?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20discuss%20a%20partnership%20opportunity."
+                  href="https://wa.me/250787144794?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20discuss%20a%20partnership%20opportunity."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-800 hover:bg-green-900 text-white font-bold text-sm transition-colors w-full justify-center"
@@ -290,7 +290,7 @@ export default function GetInvolved() {
                 ))}
               </div>
               <a
-                href="https://wa.me/250780000000?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20make%20a%20donation.%20Please%20send%20me%20payment%20details."
+                href="https://wa.me/250787144794?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20make%20a%20donation.%20Please%20send%20me%20payment%20details."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-sm transition-colors"
@@ -362,7 +362,7 @@ export default function GetInvolved() {
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-gray-400 mb-1">WhatsApp</p>
                     <a
-                      href="https://wa.me/250780000000"
+                      href="https://wa.me/250787144794"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm font-semibold text-green-800 hover:text-green-900 transition-colors flex items-center gap-1.5"

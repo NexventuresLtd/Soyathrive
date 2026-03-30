@@ -11,7 +11,7 @@ import { useInView } from "../hooks/useInView";
 import { useStaggeredInView } from "../hooks/useStaggeredInView";
 
 const WHATSAPP_URL =
-  "https://wa.me/250780000000?text=Hello%20SoyaThrive%2C%20I%20am%20interested%20in%20your%20soy%20products.";
+  "https://wa.me/250787144794?text=Hello%20SoyaThrive%2C%20I%20am%20interested%20in%20your%20soy%20products.";
 
 const products = [
   {

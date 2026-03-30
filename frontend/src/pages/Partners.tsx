@@ -7,7 +7,7 @@ import PhotoBlock from "../components/ui/PhotoBlock";
 import { useStaggeredInView } from "../hooks/useStaggeredInView";
 
 const WHATSAPP_BASE =
-  "https://wa.me/250780000000?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20partner%20as%20a%20";
+  "https://wa.me/250787144794?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20partner%20as%20a%20";
 
 const partnerTypes = [
   {
@@ -86,7 +86,7 @@ function PartnerApplicationForm({ partnerType }: { partnerType: string; waParam?
     const text = encodeURIComponent(
       `Hello SoyaThrive, I would like to partner as a ${partnerType}.\n\nName: ${name}\nOrganisation: ${org}\nLocation: ${location}\nMessage: ${message}`
     );
-    window.open(`https://wa.me/250780000000?text=${text}`, "_blank");
+    window.open(`https://wa.me/250787144794?text=${text}`, "_blank");
   };
 
   return (

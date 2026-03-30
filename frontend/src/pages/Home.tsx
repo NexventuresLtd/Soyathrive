@@ -9,7 +9,7 @@ import CTABand from "../components/ui/CTABand";
 import PhotoBlock from "../components/ui/PhotoBlock";
 
 const WHATSAPP_URL =
-  "https://wa.me/250780000000?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.";
+  "https://wa.me/250787144794?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.";
 
 const barriers = [
   { label: "Cost / Price", pct: 80.8 },
@@ -96,7 +96,7 @@ export default function Home() {
             {/* Right  ,  hero image */}
             <div className="hidden lg:block -mr-0">
               <PhotoBlock
-                src="/images/hero-mother-child.jpg"
+                src="https://www.unicef.org/rwanda/sites/unicef.org.rwanda/files/styles/press_release_feature/public/4G7A4891.jpg.webp?itok=N53dDnDa"
                 alt="Mother feeding a healthy child in Rwanda"
                 overlay="green"
                 className="h-full min-h-[540px]"
@@ -239,9 +239,9 @@ export default function Home() {
 
       {/* ── PHOTO STRIP ── */}
       <div className="grid grid-cols-3 h-40 sm:h-56">
-        <PhotoBlock src="/images/community-health.jpg" alt="Community health worker session" overlay="green" />
-        <PhotoBlock src="/images/soy-products.jpg" alt="SoyaThrive product range" overlay="dark" />
-        <PhotoBlock src="/images/farmers-field.jpg" alt="Soybean farmers in Ngororero" overlay="green" />
+        <PhotoBlock src="https://chwcentral.org/wp-content/uploads/2020/11/Rwanda-Nov-2020-Feature-Main-Pic.png" alt="Community health worker session" overlay="green" />
+        <PhotoBlock src="../public/SoyaThrive_Products.png" alt="SoyaThrive product range" overlay="dark" />
+        <PhotoBlock src="https://www.farmafrica.org/wp-content/uploads/2025/12/RS22344_Soybean-Alupe-05_lpr.jpg" alt="Soybean farmers in Ngororero" overlay="green" />
       </div>
 
       {/* ── CTA ── */}

@@ -8,7 +8,7 @@ import PhotoBlock from "../components/ui/PhotoBlock";
 import { useStaggeredInView } from "../hooks/useStaggeredInView";
 
 const WHATSAPP_URL =
-  "https://wa.me/250780000000?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20learn%20more%20about%20nutrition%20education.";
+  "https://wa.me/250787144794?text=Hello%20SoyaThrive%2C%20I%20would%20like%20to%20learn%20more%20about%20nutrition%20education.";
 
 const whyMatters = [
   { num: "01", stat: "1 in 3", label: "Children in rural Rwanda show signs of stunting from chronic undernutrition." },

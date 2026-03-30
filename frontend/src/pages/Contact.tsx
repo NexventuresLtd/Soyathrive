@@ -5,9 +5,9 @@ import { useInView } from "../hooks/useInView";
 import { useStaggeredInView } from "../hooks/useStaggeredInView";
 
 const WHATSAPP_URL =
-  "https://wa.me/250780000000?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.";
+  "https://wa.me/250787144794?text=Hello%20SoyaThrive%20Initiative%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work.";
 const WHATSAPP_MSG = (role: string) =>
-  `https://wa.me/250780000000?text=${encodeURIComponent(`Hello SoyaThrive! I am interested as a ${role}. I would like to learn more.`)}`;
+  `https://wa.me/250787144794?text=${encodeURIComponent(`Hello SoyaThrive! I am interested as a ${role}. I would like to learn more.`)}`;
 
 const roles = [
   { id: "donor", Icon: Handshake, title: "Donor / NGO", desc: "Fund soy food production, nutrition education, or farmer training programs." },
@@ -51,7 +51,7 @@ export default function Contact() {
     const roleLabel = selectedRole ? `[${selectedRoleLabel}] ` : "";
     const orgPart = form.org ? `\nOrganization: ${form.org}` : "";
     const msg = `${roleLabel}Hello SoyaThrive!\n\nName: ${form.name}\nEmail: ${form.email}${orgPart}\n\n${form.message}`;
-    const waUrl = `https://wa.me/250780000000?text=${encodeURIComponent(msg)}`;
+    const waUrl = `https://wa.me/250787144794?text=${encodeURIComponent(msg)}`;
     window.open(waUrl, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };

@@ -7,7 +7,7 @@ import { useCountUp } from "../hooks/useCountUp";
 import { useInView } from "../hooks/useInView";
 import { useStaggeredInView } from "../hooks/useStaggeredInView";
 
-const WHATSAPP_FUND = `https://wa.me/250780000000?text=${encodeURIComponent("Hello SoyaThrive! I would like to support your initiative. Please tell me how I can contribute.")}`;
+const WHATSAPP_FUND = `https://wa.me/250787144794?text=${encodeURIComponent("Hello SoyaThrive! I would like to support your initiative. Please tell me how I can contribute.")}`;
 
 function AnimatedStat({ value, suffix = "", label, color }: { value: number; suffix?: string; label: string; color: string }) {
   const { count, ref } = useCountUp(value, 1500);
