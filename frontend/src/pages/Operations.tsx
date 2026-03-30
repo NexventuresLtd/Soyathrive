@@ -72,7 +72,7 @@ export default function Operations() {
         image="/images/operations-bg.jpg"
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+      <div className="max-w-11/12 mx-auto px-6 lg:px-8 py-20">
 
         {/* Permits */}
         <section

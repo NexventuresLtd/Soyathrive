@@ -59,7 +59,7 @@ export default function About() {
 
       {/* ── FOUNDING STORY ── */}
       <section ref={storyRef} className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10">
+        <div className="max-w-11/12 mx-auto px-6 sm:px-10">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className={storyIn ? "animate-fade-left" : "opacity-0"}>
               <Eyebrow text="Founding Story" />
@@ -110,7 +110,7 @@ export default function About() {
 
       {/* ── VISION & MISSION ── */}
       <section ref={vmRef} className="py-24 bg-gray-50 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10">
+        <div className="max-w-11/12 mx-auto px-6 sm:px-10">
           <div className="grid md:grid-cols-2 gap-px bg-gray-200">
             <div className={`bg-green-800 p-10 relative overflow-hidden ${vmIn ? "animate-fade-up" : "opacity-0"}`}>
               <div aria-hidden="true" className="absolute -bottom-4 -right-4 text-[8rem] font-black text-white/[0.04] leading-none select-none pointer-events-none">V</div>
@@ -152,7 +152,7 @@ export default function About() {
 
       {/* ── STATS ── */}
       <section ref={statsRef} className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10">
+        <div className="max-w-11/12 mx-auto px-6 sm:px-10">
           <Eyebrow text="Business Overview" />
           <h2 className={`text-4xl font-black text-gray-900 tracking-tight mb-12 ${statsIn ? "animate-fade-up" : "opacity-0"}`}>
             Where We Stand
@@ -183,7 +183,7 @@ export default function About() {
 
       {/* ── CORE VALUES ── */}
       <section className="py-24 bg-gray-50 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10">
+        <div className="max-w-11/12 mx-auto px-6 sm:px-10">
           <Eyebrow text="Core Values" />
           <h2 className="text-4xl font-black text-gray-900 tracking-tight mb-14">
             What Guides Us
@@ -210,7 +210,7 @@ export default function About() {
 
       {/* ── OBJECTIVES ── */}
       <section ref={objRef} className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10">
+        <div className="max-w-11/12 mx-auto px-6 sm:px-10">
           <Eyebrow text="Strategic Objectives" amber />
           <h2 className="text-4xl font-black text-gray-900 tracking-tight mb-14">
             Our Three-Year Goals
@@ -242,7 +242,7 @@ export default function About() {
 
       {/* ── TEAM ── */}
       <section ref={teamRef} className="py-24 bg-gray-50 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10">
+        <div className="max-w-11/12 mx-auto px-6 sm:px-10">
           <Eyebrow text="Our Team" />
           <h2 className="text-4xl font-black text-gray-900 tracking-tight mb-14">
             The People Behind SoyaThrive
@@ -274,7 +274,7 @@ export default function About() {
 
       {/* ── CTA ── */}
       <section className="py-24 bg-green-800 hero-grain border-t-2 border-amber-500">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10">
+        <div className="relative z-10 max-w-11/12 mx-auto px-6 sm:px-10">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
             <div>
               <div className="flex items-center gap-3 mb-4">

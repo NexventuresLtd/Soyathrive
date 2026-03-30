@@ -183,7 +183,7 @@ export default function Funding() {
         )}
       </Modal>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+      <div className="max-w-11/12 mx-auto px-6 lg:px-8 py-20">
 
         {/* Primary WhatsApp CTA */}
         <section className="mb-20 relative bg-green-900 hero-grain overflow-hidden p-10 sm:p-16"

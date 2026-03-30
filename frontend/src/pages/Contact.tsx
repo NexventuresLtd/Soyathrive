@@ -69,7 +69,7 @@ export default function Contact() {
         image="/images/contact-bg.jpg"
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+      <div className="max-w-11/12 mx-auto px-6 lg:px-8 py-20">
 
         {/* WhatsApp quick bar */}
         <section className="mb-20 border border-green-200 bg-green-50 p-6 flex flex-col sm:flex-row items-center justify-between gap-5">
