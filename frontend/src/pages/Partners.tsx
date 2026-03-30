@@ -14,7 +14,7 @@ const partnerTypes = [
     id: "schools",
     label: "Schools & ECDs",
     tag: "For Schools & ECDs",
-    image: "/images/partners/school-children.jpg",
+    image: "https://www.ktpress.rw/wp-content/uploads/2023/05/IMG-20230509-WA0023.jpg",
     headline: "Feed children better  ,  every school day.",
     intro:
       "SoyaThrive supplies schools and Early Childhood Development centers with fortified soy foods at bulk pricing, paired with nutrition education for teachers and caregivers.",
@@ -35,7 +35,7 @@ const partnerTypes = [
     id: "health",
     label: "Health Centers & CHWs",
     tag: "For Health Centers & CHWs",
-    image: "/images/partners/health-workers.jpg",
+    image: "https://images.squarespace-cdn.com/content/v1/64c93ffe00ba1903b81a7108/49588557-4367-41b6-9d83-fa066c8ee023/20220803_135150+%281%29.jpg",
     headline: "The community trusts you  ,  we support you.",
     intro:
       "Community Health Workers and health centers are the most trusted nutrition advisors in Ngororero District. We provide CHWs with products, training, and resources to make effective recommendations.",
@@ -56,7 +56,7 @@ const partnerTypes = [
     id: "farmers",
     label: "Farmers & Cooperatives",
     tag: "For Farmers & Cooperatives",
-    image: "/images/partners/soy-farmers.jpg",
+    image: "https://media.licdn.com/dms/image/v2/D5612AQHTM42mqPJOnA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1696699146680?e=2147483647&v=beta&t=cs-jH8Z-_75KB2DZp6dpc3M0Mzngvkcc776Yve853I4",
     headline: "Grow soybeans. We guarantee the market.",
     intro:
       "We work directly with smallholder soybean farmers in Ngororero District, offering contractual purchase agreements, fair pricing, and capacity building on cultivation and post-harvest handling.",

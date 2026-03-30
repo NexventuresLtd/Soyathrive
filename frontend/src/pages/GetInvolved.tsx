@@ -160,7 +160,7 @@ export default function GetInvolved() {
             <div className="space-y-4">
               {/* Product image */}
               <PhotoBlock
-                src="/images/soy-products-display.jpg"
+                src="../public/SoyaThrive product range display.png"
                 alt="SoyaThrive product range display"
                 overlay="none"
                 className="h-48 border border-gray-200"
@@ -230,7 +230,7 @@ export default function GetInvolved() {
             </div>
             <div className="space-y-4">
               <PhotoBlock
-                src="/images/partnership-meeting.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsJpc6f0MayaPhSI3_wFB8MqILBBSWnLfImw&s"
                 alt="SoyaThrive partnership meeting with community leaders"
                 overlay="green"
                 className="h-44"
@@ -300,7 +300,7 @@ export default function GetInvolved() {
             </div>
             <div className="space-y-4">
               <PhotoBlock
-                src="/images/community-family.jpg"
+                src="https://nairametrics.com/wp-content/uploads/2024/08/food-hunger.jpg"
                 alt="Family benefiting from SoyaThrive nutrition program"
                 overlay="green"
                 className="h-48"
@@ -346,7 +346,7 @@ export default function GetInvolved() {
             </div>
             <div className="space-y-4">
               <PhotoBlock
-                src="/images/founder-office.jpg"
+                src="../public/Jayp_profile.jpeg"
                 alt="Jean Paul Bukuru, Founder of SoyaThrive Initiative"
                 overlay="none"
                 className="h-44 border border-gray-200"
@@ -367,7 +367,7 @@ export default function GetInvolved() {
                       rel="noopener noreferrer"
                       className="text-sm font-semibold text-green-800 hover:text-green-900 transition-colors flex items-center gap-1.5"
                     >
-                      <MessageCircle className="w-4 h-4" /> +250 780 000 000
+                      <MessageCircle className="w-4 h-4" /> +250 787 144 794
                     </a>
                   </div>
                   <div>

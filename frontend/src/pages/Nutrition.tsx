@@ -20,28 +20,28 @@ const programs = [
   {
     num: "01",
     title: "Cooking Demonstrations",
-    image: "/images/cooking-demo.jpg",
+    image: "https://simpleveganizer.com/wp-content/uploads/2023/04/Cooked-soybeans-in-a-bowl-next-to-dry-soybeans-2.jpg",
     desc: "Hands-on community workshops at health centers showing families how to prepare soy foods within their existing cooking routines.",
     outcomes: ["Prepare porridge, bread, and local dishes", "Portion sizes for children under five", "Take-home recipe cards in Kinyarwanda"],
   },
   {
     num: "02",
     title: "CHW Nutrition Sessions",
-    image: "/images/chw-session.jpg",
+    image: "https://i0.wp.com/chwcentral.org/wp-content/uploads/2017/01/Looking-for-Fever.jpg?fit=1200%2C825&ssl=1",
     desc: "Community Health Workers deliver structured nutrition education during home visits and community health days  ,  reaching families where they are.",
     outcomes: ["One-on-one guidance for caregivers", "Integrated with existing health program visits", "Consistent messaging across Ngororero District"],
   },
   {
     num: "03",
     title: "School & ECD Programs",
-    image: "/images/school-program.jpg",
+    image: "https://static.wixstatic.com/media/99d269_40676fa3b29f49a988af2b0d511117c8~mv2.jpeg/v1/fill/w_640,h_542,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/99d269_40676fa3b29f49a988af2b0d511117c8~mv2.jpeg",
     desc: "Integration with Early Childhood Development centers and primary schools to build nutritious soy foods into school feeding programs.",
     outcomes: ["School feeding program implementation support", "Teacher and caregiver nutrition training", "Children build healthy eating habits early"],
   },
   {
     num: "04",
     title: "Farmer Capacity Building",
-    image: "/images/farmer-training.jpg",
+    image: "https://www.globalgap.org/_astro/Namibia_cap-bu-project-2024_1LTbT8.webp",
     desc: "Training smallholder soybean farmers on cultivation, post-harvest handling, and food safety  ,  ensuring quality supply and farmer livelihood improvement.",
     outcomes: ["Improved soybean yields and quality", "Post-harvest handling and storage", "Market linkage and fair pricing support"],
   },
@@ -60,7 +60,7 @@ const recipes = [
     title: "Soy Porridge (Uji wa Soya)",
     time: "10 min",
     difficulty: "Easy",
-    image: "/images/recipes/porridge.jpg",
+    image: "../public/Soy Porridge (Uji wa Soya).png",
     ingredients: ["3 tbsp Soy Porridge Mix", "250ml boiling water", "Pinch of salt or sugar"],
     steps: ["Boil water in a pot.", "Add porridge mix while stirring continuously.", "Cook 5 min until smooth. Serve warm."],
     tip: "Perfect for breakfast  ,  provides 22g of protein for growing children.",
@@ -69,7 +69,7 @@ const recipes = [
     title: "Soy-Fortified Ugali",
     time: "20 min",
     difficulty: "Easy",
-    image: "/images/recipes/ugali.jpg",
+    image: "../public/Soy-Fortified Ugali.png",
     ingredients: ["2 cups maize flour", "½ cup Soy Flour", "3 cups water", "Pinch of salt"],
     steps: ["Boil salted water.", "Mix soy with maize flour.", "Add gradually, stirring until stiff. Serve with vegetables or beans."],
     tip: "Blending 20% soy flour doubles the protein without changing the taste families love.",
@@ -78,7 +78,7 @@ const recipes = [
     title: "Soy Milk Chai",
     time: "5 min",
     difficulty: "Easy",
-    image: "/images/recipes/chai.jpg",
+    image: "../public/Soy Milk Chai.png",
     ingredients: ["200ml Soy Milk", "1 tea bag", "Ginger or cinnamon (optional)", "Sugar to taste"],
     steps: ["Heat soy milk gently.", "Add tea bag, steep 3 minutes.", "Add ginger or cinnamon. Sweeten to taste."],
     tip: "A nutritious alternative to black tea  ,  great for the whole family, morning or evening.",
@@ -87,7 +87,7 @@ const recipes = [
     title: "Roasted Soy Trail Mix",
     time: "5 min",
     difficulty: "Easy",
-    image: "/images/recipes/trail-mix.jpg",
+    image: "../public/Roasted Soy Trail Mix.png",
     ingredients: ["50g Roasted Soy Snacks", "Groundnuts (optional)", "Dried fruit (optional)"],
     steps: ["Combine roasted soy snacks with groundnuts.", "Add dried fruit for sweetness.", "Pack into small bags for school snacks."],
     tip: "A protein-packed school snack that keeps children focused and energised.",
@@ -224,7 +224,7 @@ export default function Nutrition() {
             <div>
               {/* CHW photo */}
               <PhotoBlock
-                src="/images/chw-community.jpg"
+                src="https://newsroom.amref.org/wp-content/uploads/2025/06/Life-saving-Health-Services_-Malawi_-Community-Health-Worker_-Simenti_Amref-Health-Africa_Amaru-Photography-2-scaled.jpg"
                 alt="Community Health Worker delivering nutrition education"
                 overlay="green"
                 className="h-44 sm:h-52 mb-6"
