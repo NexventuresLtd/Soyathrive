@@ -22,7 +22,7 @@ const products = [
     accent: "green" as const,
     interest: "4.48 / 5",
     interestPct: 89.6,
-    image: "../public/Soy Porridge Mix.png",
+    image: "/public/Soy Porridge Mix.png",
     desc: "Ready-to-cook nutritious porridge from soy and other grains, designed specifically for children and families.",
     features: [
       "Highest community interest rating (4.48/5)",
@@ -47,7 +47,7 @@ const products = [
     accent: "amber" as const,
     interest: "4.21 / 5",
     interestPct: 84.2,
-    image: "../public/Fortified Soy Flour.png",
+    image: "/public/Fortified Soy Flour.png",
     desc: "Protein-rich flour from processed soybeans  ,  blends with other flours to prepare porridge, bread, and local meals.",
     features: [
       "High protein content targeting child malnutrition",
@@ -72,7 +72,7 @@ const products = [
     accent: "green" as const,
     interest: "3.87 / 5",
     interestPct: 77.4,
-    image: "../public/Soy Milk.png",
+    image: "/public/Soy Milk.png",
     desc: "An affordable plant-based milk alternative providing protein and essential nutrients  ,  accessible substitute for animal milk.",
     features: [
       "Affordable alternative to expensive cow's milk",
@@ -97,7 +97,7 @@ const products = [
     accent: "amber" as const,
     interest: "3.74 / 5",
     interestPct: 74.8,
-    image: "../public/Roasted Soy Snacks.png",
+    image: "/public/Roasted Soy Snacks.png",
     desc: "Roasted soybeans packaged as a protein-rich snack  ,  ideal for school-aged children as a nutritious alternative.",
     features: [
       "High protein snack replacing unhealthy options",

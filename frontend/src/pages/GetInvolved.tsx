@@ -160,7 +160,7 @@ export default function GetInvolved() {
             <div className="space-y-4">
               {/* Product image */}
               <PhotoBlock
-                src="../public/SoyaThrive product range display.png"
+                src="/public/SoyaThrive product range display.png"
                 alt="SoyaThrive product range display"
                 overlay="none"
                 className="h-48 border border-gray-200"
@@ -346,7 +346,7 @@ export default function GetInvolved() {
             </div>
             <div className="space-y-4">
               <PhotoBlock
-                src="../public/Jayp_profile.jpeg"
+                src="/public/Jayp_profile.jpeg"
                 alt="Jean Paul Bukuru, Founder of SoyaThrive Initiative"
                 overlay="none"
                 className="h-44 border border-gray-200"

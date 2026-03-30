@@ -240,7 +240,7 @@ export default function Home() {
       {/* ── PHOTO STRIP ── */}
       <div className="grid grid-cols-3 h-40 sm:h-56">
         <PhotoBlock src="https://chwcentral.org/wp-content/uploads/2020/11/Rwanda-Nov-2020-Feature-Main-Pic.png" alt="Community health worker session" overlay="green" />
-        <PhotoBlock src="../public/SoyaThrive_Products.png" alt="SoyaThrive product range" overlay="dark" />
+        <PhotoBlock src="/public/SoyaThrive_Products.png" alt="SoyaThrive product range" overlay="dark" />
         <PhotoBlock src="https://www.farmafrica.org/wp-content/uploads/2025/12/RS22344_Soybean-Alupe-05_lpr.jpg" alt="Soybean farmers in Ngororero" overlay="green" />
       </div>
 
